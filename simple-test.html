@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Test</title>
+    <style>
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            font-family: Arial, sans-serif;
+            color: white;
+            padding: 20px;
+        }
+        .test-card {
+            background: white;
+            color: black;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>Simple Test Page</h1>
+    <div class="test-card">
+        <h2>If you see styling, the issue is with external CSS loading</h2>
+        <p>This page uses inline CSS to test if styling works at all.</p>
+    </div>
+    
+    <div class="test-card">
+        <h3>External CSS Test</h3>
+        <p>Now testing external CSS...</p>
+        <link rel="stylesheet" href="css/style.css">
+        <div class="card">
+            <p>This should be styled by external CSS if it loads properly.</p>
+        </div>
+    </div>
+    
+    <script>
+        console.log('JavaScript is working!');
+        
+        // Test if CSS file is accessible
+        fetch('css/style.css')
+            .then(response => {
+                console.log('CSS file response status:', response.status);
+                if (response.ok) {
+                    console.log('CSS file is accessible');
+                } else {
+                    console.log('CSS file is NOT accessible');
+                }
+            })
+            .catch(error => {
+                console.log('Error accessing CSS file:', error);
+            });
+    </script>
+</body>
+</html>
