@@ -4,23 +4,6 @@
   # Publish the root directory
   publish = "."
 
-[build.environment]
-  # Node.js version (not needed but good to specify)
-  NODE_VERSION = "18"
-
-# Redirect rules for SPA-like behavior
-[[redirects]]
-  from = "/api/*"
-  to = "/js/api-mock.js"
-  status = 200
-
-# Handle 404s by serving index.html (for client-side routing)
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-  conditions = {Role = ["admin"]}
-
 # Security headers
 [[headers]]
   for = "/*"
@@ -41,45 +24,3 @@
   for = "/js/*"
   [headers.values]
     Cache-Control = "public, max-age=31536000"
-
-[[headers]]
-  for = "/assets/*"
-  [headers.values]
-    Cache-Control = "public, max-age=31536000"
-
-# Enable gzip compression
-[[headers]]
-  for = "*.js"
-  [headers.values]
-    Content-Encoding = "gzip"
-
-[[headers]]
-  for = "*.css"
-  [headers.values]
-    Content-Encoding = "gzip"
-
-# Form handling (if needed)
-[build.processing]
-  skip_processing = false
-
-[build.processing.css]
-  bundle = true
-  minify = true
-
-[build.processing.js]
-  bundle = true
-  minify = true
-
-[build.processing.html]
-  pretty_urls = true
-
-# Environment variables (if needed)
-[context.production.environment]
-  NODE_ENV = "production"
-  API_URL = "https://your-api-endpoint.com"
-
-[context.deploy-preview.environment]
-  NODE_ENV = "development"
-
-[context.branch-deploy.environment]
-  NODE_ENV = "development"

@@ -11,5 +11,5 @@
 /analyze.php    /index.html    200
 /history.php    /history.html  200
 
-# Fallback for any other routes
-/*              /index.html    200
+# Only redirect HTML pages that don't exist, not static assets
+# This allows CSS, JS, images, and other static files to load normally
