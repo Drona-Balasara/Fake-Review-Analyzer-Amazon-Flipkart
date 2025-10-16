@@ -1,0 +1,159 @@
+{
+  "products": {
+    "B08N5WRWNW": {
+      "title": "Echo Dot (4th Gen) - Smart Speaker with Alexa",
+      "image": "https://via.placeholder.com/400x400/FF9800/FFFFFF?text=Echo+Dot",
+      "category": "Smart Home",
+      "platform": "amazon",
+      "avgRating": 4.3,
+      "totalReviews": 15420,
+      "price": "$49.99"
+    },
+    "B07FZ8S74R": {
+      "title": "Fire TV Stick 4K - Streaming Media Player",
+      "image": "https://via.placeholder.com/400x400/E91E63/FFFFFF?text=Fire+TV",
+      "category": "Streaming Device",
+      "platform": "amazon",
+      "avgRating": 4.4,
+      "totalReviews": 8932,
+      "price": "$39.99"
+    },
+    "B09DZH4C71": {
+      "title": "Cosmic Byte Odyssey Condensor Microphone",
+      "image": "https://via.placeholder.com/400x400/4CAF50/FFFFFF?text=Microphone",
+      "category": "Audio Equipment",
+      "platform": "amazon",
+      "avgRating": 4.1,
+      "totalReviews": 2156,
+      "price": "₹2,999"
+    },
+    "B0FKTDXKXV": {
+      "title": "Maxoshine Car Dashboard Polish - Non-Greasy Formula",
+      "image": "https://via.placeholder.com/400x400/2196F3/FFFFFF?text=Car+Care",
+      "category": "Automotive",
+      "platform": "amazon",
+      "avgRating": 4.2,
+      "totalReviews": 1834,
+      "price": "₹299"
+    },
+    "B0DZX4PYLV": {
+      "title": "Phone Ring Holder and Kickstand - Universal Compatibility",
+      "image": "https://via.placeholder.com/400x400/4CAF50/FFFFFF?text=Mobile+Accessories",
+      "category": "Mobile Accessories",
+      "platform": "amazon",
+      "avgRating": 3.9,
+      "totalReviews": 967,
+      "price": "₹199"
+    },
+    "B0DM5RD6M6": {
+      "title": "ConnectPlus Power Bank 20000mAh Portable Charger",
+      "image": "https://via.placeholder.com/400x400/2196F3/FFFFFF?text=Power+Bank",
+      "category": "Electronics",
+      "platform": "amazon",
+      "avgRating": 4.0,
+      "totalReviews": 3421,
+      "price": "₹1,499"
+    },
+    "B085NNH52P": {
+      "title": "ConnectPlus Portable Bluetooth Speaker - Waterproof",
+      "image": "https://via.placeholder.com/400x400/2196F3/FFFFFF?text=Bluetooth+Speaker",
+      "category": "Audio Equipment",
+      "platform": "amazon",
+      "avgRating": 4.1,
+      "totalReviews": 2789,
+      "price": "₹1,999"
+    },
+    "B08HEADSET": {
+      "title": "Premium Wireless Headphones with Active Noise Cancellation",
+      "image": "https://via.placeholder.com/400x400/4CAF50/FFFFFF?text=Headphones",
+      "category": "Audio Equipment",
+      "platform": "amazon",
+      "avgRating": 4.3,
+      "totalReviews": 5643,
+      "price": "₹4,999"
+    },
+    "MOBFKD123456": {
+      "title": "Smartphone Case with Drop Protection",
+      "image": "https://via.placeholder.com/400x400/9C27B0/FFFFFF?text=Phone+Case",
+      "category": "Mobile Accessories",
+      "platform": "flipkart",
+      "avgRating": 4.0,
+      "totalReviews": 1245,
+      "price": "₹399"
+    }
+  },
+  "categories": [
+    "Smart Home",
+    "Streaming Device",
+    "Audio Equipment",
+    "Automotive",
+    "Mobile Accessories",
+    "Electronics"
+  ],
+  "platforms": [
+    "amazon",
+    "flipkart"
+  ],
+  "reviewTemplates": {
+    "positive": [
+      "Great product! Highly recommend it.",
+      "Excellent quality and fast delivery.",
+      "Perfect for my needs. Very satisfied.",
+      "Good value for money. Works as expected.",
+      "Amazing product! Exceeded my expectations.",
+      "Love this product! Works perfectly.",
+      "Fantastic quality and great price.",
+      "Exactly what I was looking for.",
+      "Very happy with this purchase.",
+      "Outstanding product quality."
+    ],
+    "negative": [
+      "Poor quality. Not worth the money.",
+      "Disappointed with this purchase.",
+      "Product broke after a few days.",
+      "Not as described. Returning it.",
+      "Terrible experience. Avoid this product.",
+      "Waste of money. Very poor quality.",
+      "Doesn't work as advertised.",
+      "Cheap materials and poor build quality.",
+      "Regret buying this product.",
+      "Complete disappointment."
+    ],
+    "neutral": [
+      "Average product. Nothing special.",
+      "Okay quality. Could be better.",
+      "Mixed feelings about this product.",
+      "It's fine but not great.",
+      "Decent product for the price.",
+      "Works but has some issues.",
+      "Not bad, not great either.",
+      "Acceptable quality for the price.",
+      "Does the job but could improve.",
+      "Fair product with room for improvement."
+    ],
+    "fake": [
+      "Amazing! Best product ever! 5 stars!",
+      "Incredible quality! Must buy!",
+      "Perfect! Amazing! Wonderful!",
+      "Best purchase ever made!",
+      "Outstanding product! Highly recommended!",
+      "Superb quality! Excellent! Perfect!",
+      "Mind-blowing product! Amazing quality!",
+      "Fantastic! Incredible! Must have!",
+      "Awesome product! Best ever!",
+      "Unbelievable quality! Perfect product!"
+    ]
+  },
+  "suspiciousPatterns": [
+    "Excessive use of superlatives",
+    "Generic positive language",
+    "Lack of specific details",
+    "Perfect 5-star ratings only",
+    "Reviews posted on same dates",
+    "Similar writing patterns",
+    "Overly promotional language",
+    "No mention of actual usage",
+    "Identical review structures",
+    "Unrealistic praise levels"
+  ]
+}

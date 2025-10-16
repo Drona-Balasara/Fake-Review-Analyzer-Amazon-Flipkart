@@ -1,0 +1,58 @@
+{
+  "name": "product-trust-analyzer-static",
+  "version": "1.0.0",
+  "description": "A modern static web application that analyzes product reviews to detect fake reviews and provide trust ratings",
+  "main": "index.html",
+  "scripts": {
+    "start": "npx http-server -p 8000 -c-1",
+    "dev": "npx http-server -p 8000 -c-1 -o",
+    "build": "echo 'No build step required for static site'",
+    "test": "echo 'No tests configured for static version'",
+    "lint": "npx eslint js/**/*.js",
+    "format": "npx prettier --write .",
+    "validate": "npx html-validate *.html",
+    "lighthouse": "npx lighthouse http://localhost:8000 --output html --output-path ./lighthouse-report.html",
+    "deploy": "netlify deploy --prod"
+  },
+  "keywords": [
+    "fake-reviews",
+    "trust-analyzer",
+    "product-analysis",
+    "e-commerce",
+    "amazon",
+    "flipkart",
+    "review-detection",
+    "web-app",
+    "javascript",
+    "pwa",
+    "static-site",
+    "netlify"
+  ],
+  "author": "Your Name <your.email@example.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/product-trust-analyzer.git"
+  },
+  "bugs": {
+    "url": "https://github.com/yourusername/product-trust-analyzer/issues"
+  },
+  "homepage": "https://product-trust-analyzer.netlify.app",
+  "devDependencies": {
+    "eslint": "^8.0.0",
+    "html-validate": "^7.0.0",
+    "http-server": "^14.0.0",
+    "lighthouse": "^10.0.0",
+    "netlify-cli": "^15.0.0",
+    "prettier": "^2.8.0"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead"
+  ],
+  "engines": {
+    "node": ">=14.0.0",
+    "npm": ">=6.0.0"
+  }
+}

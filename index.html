@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Trust Analyzer - Check Fake Reviews</title>
+    <meta name="description" content="Analyze Amazon and Flipkart product reviews to detect fake reviews and get trust ratings">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#8b5cf6">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://product-trust-analyzer.netlify.app/">
+    <meta property="og:title" content="Product Trust Analyzer - Detect Fake Reviews">
+    <meta property="og:description" content="Analyze Amazon and Flipkart product reviews to detect fake reviews and get trust ratings">
+    <meta property="og:image" content="https://product-trust-analyzer.netlify.app/assets/og-image.png">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://product-trust-analyzer.netlify.app/">
+    <meta property="twitter:title" content="Product Trust Analyzer - Detect Fake Reviews">
+    <meta property="twitter:description" content="Analyze Amazon and Flipkart product reviews to detect fake reviews and get trust ratings">
+    <meta property="twitter:image" content="https://product-trust-analyzer.netlify.app/assets/og-image.png">
+</head>
+<body>
+    <div class="container">
+        <!-- Header Section -->
+        <header class="header">
+            <h1>Product Trust Analyzer</h1>
+            <p>Analyze product reviews from Amazon & Flipkart to detect fake reviews and get trust ratings</p>
+            
+            <!-- Welcome message for logged in users -->
+            <div id="welcomeMessage" style="display: none; background: linear-gradient(135deg, #e0e7ff 0%, #c7d2fe 100%); padding: 1rem; border-radius: 12px; margin-top: 1rem;">
+                <p style="margin: 0; color: #3730a3;">
+                    👋 <strong>Welcome back!</strong> Your analyses are now being saved to your personal history.
+                    <a href="dashboard.html" style="color: #3730a3; text-decoration: underline;">View Dashboard</a>
+                </p>
+            </div>
+        </header>
+
+        <!-- Navigation -->
+        <nav class="nav">
+            <a href="index.html">🏠 Home</a>
+            <a href="history.html">📊 History</a>
+            <a href="about.html">ℹ️ About</a>
+            
+            <!-- Authentication Links -->
+            <div id="authLinks" style="display: flex; gap: 0.5rem; margin-left: auto;">
+                <!-- Logged out state -->
+                <div id="loggedOutLinks">
+                    <a href="#" onclick="showLoginDemo()">🔐 Login (Demo)</a>
+                    <a href="#" onclick="showRegisterDemo()">📝 Register (Demo)</a>
+                </div>
+                
+                <!-- Logged in state -->
+                <div id="loggedInLinks" style="display: none;">
+                    <a href="history.html">📊 My History</a>
+                    <button onclick="logout()" style="background: #fee2e2; color: #dc2626; border: none; padding: 8px 16px; border-radius: 20px; cursor: pointer; font-weight: 500;">🚪 Logout</button>
+                </div>
+            </div>
+            
+            <div class="theme-switcher">
+                <button onclick="switchTheme('purple')" class="theme-btn purple-theme" title="Purple Theme">🟣</button>
+                <button onclick="switchTheme('blue')" class="theme-btn blue-theme" title="Blue Theme">🔵</button>
+                <button onclick="switchTheme('green')" class="theme-btn green-theme" title="Green Theme">🟢</button>
+                <button onclick="switchTheme('dark')" class="theme-btn dark-theme" title="Dark Theme">⚫</button>
+            </div>
+        </nav>
+
+        <!-- Main Analysis Form -->
+        <div class="card">
+            <h2>Analyze Product Reviews</h2>
+            <form id="urlForm" class="url-form">
+                <input 
+                    type="url" 
+                    id="urlInput" 
+                    class="url-input" 
+                    placeholder="Enter Amazon or Flipkart product URL (e.g., https://amazon.com/dp/B08N5WRWNW)"
+                    required
+                >
+                <button type="submit" id="analyzeBtn" class="analyze-btn" disabled>
+                    Analyze Reviews
+                </button>
+            </form>
+            
+            <!-- Demo Notice -->
+            <div class="demo-notice" style="background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%); border: 2px solid #f59e0b; border-radius: 12px; padding: 1rem; margin: 1rem 0; text-align: left;">
+                <h4 style="margin: 0 0 0.5rem 0; color: #92400e; display: flex; align-items: center;">
+                    <span style="font-size: 1.2em; margin-right: 0.5rem;">⚠️</span>
+                    Educational Demo Version
+                </h4>
+                <p style="margin: 0; color: #92400e; font-size: 0.9em; line-height: 1.4;">
+                    <strong>Note:</strong> This application uses simulated review data for educational purposes. 
+                    Product information is extracted from URLs when possible, but reviews and analysis are generated 
+                    for demonstration. Real web scraping would violate platform Terms of Service.
+                </p>
+            </div>
+            
+            <div class="mt-1">
+                <p><strong>Supported platforms:</strong> Amazon.com, Amazon.in, Flipkart.com</p>
+                <p><strong>Example URLs:</strong></p>
+                <ul style="text-align: left; max-width: 600px; margin: 0 auto;">
+                    <li>https://amazon.com/dp/PRODUCT_ID</li>
+                    <li>https://amazon.in/gp/product/PRODUCT_ID</li>
+                    <li>https://flipkart.com/product-name/p/PRODUCT_ID</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Loading Indicator -->
+        <div id="loading" class="loading card">
+            <div class="spinner"></div>
+            <h3>Analyzing Reviews...</h3>
+            <p>Please wait while we analyze the product reviews for fake patterns.</p>
+        </div>
+
+        <!-- Results Section -->
+        <div id="results" class="results">
+            <!-- Trust Score -->
+            <div class="card">
+                <div class="trust-score">
+                    <h2>Trust Rating</h2>
+                    <div id="scoreMeter" class="score-meter">
+                        <span id="scoreText">0.0</span>
+                    </div>
+                    <p>Trust Score out of 10</p>
+                </div>
+            </div>
+
+            <!-- Fake Review Alert -->
+            <div class="card">
+                <div id="fakeAlert" class="fake-alert">
+                    <h3>⚠️ Fake Review Detection</h3>
+                    <p id="fakeText">0% fake reviews detected</p>
+                </div>
+            </div>
+
+            <!-- Product Information -->
+            <div class="card">
+                <h3>Product Information</h3>
+                <div class="product-info">
+                    <img id="productImage" class="product-image" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Product Image" style="background: #f0f0f0; display: block;">
+                    <div class="product-details">
+                        <h3 id="productTitle">Product Title</h3>
+                        <p><strong>Total Reviews:</strong> <span id="totalReviews">0</span></p>
+                        <p><strong>Genuine Average Rating:</strong> <span id="genuineAverage">0.0</span>/5 ⭐</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Star Distribution -->
+            <div class="card">
+                <h3>Star Rating Distribution</h3>
+                <div class="star-distribution">
+                    <div class="star-row">
+                        <span class="star-label">5 ⭐</span>
+                        <div class="star-bar">
+                            <div id="star5Fill" class="star-fill" style="width: 0%"></div>
+                        </div>
+                        <span id="star5Count" class="star-count">0 (0%)</span>
+                    </div>
+                    <div class="star-row">
+                        <span class="star-label">4 ⭐</span>
+                        <div class="star-bar">
+                            <div id="star4Fill" class="star-fill" style="width: 0%"></div>
+                        </div>
+                        <span id="star4Count" class="star-count">0 (0%)</span>
+                    </div>
+                    <div class="star-row">
+                        <span class="star-label">3 ⭐</span>
+                        <div class="star-bar">
+                            <div id="star3Fill" class="star-fill" style="width: 0%"></div>
+                        </div>
+                        <span id="star3Count" class="star-count">0 (0%)</span>
+                    </div>
+                    <div class="star-row">
+                        <span class="star-label">2 ⭐</span>
+                        <div class="star-bar">
+                            <div id="star2Fill" class="star-fill" style="width: 0%"></div>
+                        </div>
+                        <span id="star2Count" class="star-count">0 (0%)</span>
+                    </div>
+                    <div class="star-row">
+                        <span class="star-label">1 ⭐</span>
+                        <div class="star-bar">
+                            <div id="star1Fill" class="star-fill" style="width: 0%"></div>
+                        </div>
+                        <span id="star1Count" class="star-count">0 (0%)</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Recommendation -->
+            <div class="card">
+                <h3>Our Recommendation</h3>
+                <div id="recommendation" class="fake-alert safe">
+                    Proceed with caution
+                </div>
+            </div>
+
+            <!-- Detected Patterns -->
+            <div class="card">
+                <h3>Suspicious Patterns Detected</h3>
+                <div id="patternsDetected">
+                    <p>No suspicious patterns detected.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="card text-center">
+            <p>&copy; 2024 Product Trust Analyzer. Educational project for learning web development.</p>
+            <p><strong>Disclaimer:</strong> This tool provides estimates based on simple algorithms. Always use your judgment when making purchase decisions.</p>
+        </footer>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="js/main.js"></script>
+    
+    <!-- Service Worker Registration -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', function() {
+                navigator.serviceWorker.register('/sw.js')
+                    .then(function(registration) {
+                        console.log('ServiceWorker registration successful');
+                    })
+                    .catch(function(err) {
+                        console.log('ServiceWorker registration failed: ', err);
+                    });
+            });
+        }
+        
+        // Auto-fill URL from query parameter
+        document.addEventListener('DOMContentLoaded', function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const url = urlParams.get('url');
+            
+            if (url) {
+                const urlInput = document.getElementById('urlInput');
+                if (urlInput) {
+                    urlInput.value = decodeURIComponent(url);
+                    // Trigger input event to enable button
+                    urlInput.dispatchEvent(new Event('input'));
+                }
+            }
+        });
+        
+        // Demo login/register functions
+        function showLoginDemo() {
+            alert('Demo Mode: Login functionality would redirect to a login page in a real application.');
+        }
+        
+        function showRegisterDemo() {
+            alert('Demo Mode: Registration functionality would redirect to a signup page in a real application.');
+        }
+    </script>
+</body>
+</html>

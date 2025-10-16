@@ -1,0 +1,15 @@
+# Netlify redirects file
+# Handle API calls by redirecting to mock data or client-side processing
+
+# API endpoints redirect to client-side handling
+/api/analyze    /index.html    200
+/api/history    /history.html  200
+/api/delete     /index.html    200
+/auth/*         /index.html    200
+
+# Handle PHP files by redirecting to HTML equivalents
+/analyze.php    /index.html    200
+/history.php    /history.html  200
+
+# Fallback for any other routes
+/*              /index.html    200

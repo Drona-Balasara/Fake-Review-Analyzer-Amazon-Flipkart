@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About - Product Trust Analyzer</title>
+    <meta name="description" content="Learn about Product Trust Analyzer - how it works, features, and technology">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#8b5cf6">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://product-trust-analyzer.netlify.app/about.html">
+    <meta property="og:title" content="About - Product Trust Analyzer">
+    <meta property="og:description" content="Learn about Product Trust Analyzer - how it works, features, and technology">
+    <meta property="og:image" content="https://product-trust-analyzer.netlify.app/assets/og-image.png">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://product-trust-analyzer.netlify.app/about.html">
+    <meta property="twitter:title" content="About - Product Trust Analyzer">
+    <meta property="twitter:description" content="Learn about Product Trust Analyzer - how it works, features, and technology">
+    <meta property="twitter:image" content="https://product-trust-analyzer.netlify.app/assets/og-image.png">
+</head>
+<body>
+    <div class="container">
+        <!-- Header Section -->
+        <header class="header">
+            <h1>About Product Trust Analyzer</h1>
+            <p>Understanding how we detect fake reviews and calculate trust scores</p>
+        </header>
+
+        <!-- Navigation -->
+        <nav class="nav">
+            <a href="index.html">🏠 Home</a>
+            <a href="history.html">📊 History</a>
+            <a href="about.html">ℹ️ About</a>
+            
+            <div class="theme-switcher">
+                <button onclick="switchTheme('purple')" class="theme-btn purple-theme" title="Purple Theme">🟣</button>
+                <button onclick="switchTheme('blue')" class="theme-btn blue-theme" title="Blue Theme">🔵</button>
+                <button onclick="switchTheme('green')" class="theme-btn green-theme" title="Green Theme">🟢</button>
+                <button onclick="switchTheme('dark')" class="theme-btn dark-theme" title="Dark Theme">⚫</button>
+            </div>
+        </nav>
+
+        <!-- What is Product Trust Analyzer -->
+        <div class="card">
+            <h2>🔍 What is Product Trust Analyzer?</h2>
+            <p>Product Trust Analyzer is a modern web application that helps consumers make informed purchasing decisions by analyzing product reviews from Amazon and Flipkart. Our advanced algorithms detect potentially fake reviews and provide trust ratings to help you identify reliable products.</p>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; margin-top: 2rem;">
+                <div style="background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); padding: 1.5rem; border-radius: 12px; border-left: 4px solid #10b981;">
+                    <h4 style="color: #059669; margin-bottom: 0.5rem;">🎯 Accurate Detection</h4>
+                    <p style="margin: 0; color: #065f46;">Advanced pattern recognition algorithms analyze review text, ratings, and timing patterns.</p>
+                </div>
+                <div style="background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%); padding: 1.5rem; border-radius: 12px; border-left: 4px solid #3b82f6;">
+                    <h4 style="color: #1d4ed8; margin-bottom: 0.5rem;">⚡ Real-time Analysis</h4>
+                    <p style="margin: 0; color: #1e3a8a;">Instant URL validation and processing with immediate results display.</p>
+                </div>
+                <div style="background: linear-gradient(135deg, #fefce8 0%, #fef3c7 100%); padding: 1.5rem; border-radius: 12px; border-left: 4px solid #f59e0b;">
+                    <h4 style="color: #d97706; margin-bottom: 0.5rem;">📱 Mobile Friendly</h4>
+                    <p style="margin: 0; color: #92400e;">Responsive design that works perfectly on all devices and screen sizes.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- How It Works -->
+        <div class="card">
+            <h2>🔬 How It Works</h2>
+            <p>Our sophisticated analysis system examines multiple factors to determine the authenticity of product reviews:</p>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin-top: 2rem;">
+                <div style="background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%); padding: 1.5rem; border-radius: 12px; border: 1px solid #e2e8f0;">
+                    <h4 style="color: #1e293b; margin-bottom: 1rem;">📝 Text Analysis</h4>
+                    <ul style="margin: 0; padding-left: 1.5rem; color: #475569;">
+                        <li>Language pattern detection</li>
+                        <li>Sentiment consistency analysis</li>
+                        <li>Generic vs specific content</li>
+                        <li>Grammar and spelling patterns</li>
+                    </ul>
+                </div>
+                
+                <div style="background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%); padding: 1.5rem; border-radius: 12px; border: 1px solid #e2e8f0;">
+                    <h4 style="color: #1e293b; margin-bottom: 1rem;">⭐ Rating Patterns</h4>
+                    <ul style="margin: 0; padding-left: 1.5rem; color: #475569;">
+                        <li>Unusual rating distributions</li>
+                        <li>Sudden rating spikes</li>
+                        <li>Rating vs review content mismatch</li>
+                        <li>Historical rating trends</li>
+                    </ul>
+                </div>
+                
+                <div style="background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%); padding: 1.5rem; border-radius: 12px; border: 1px solid #e2e8f0;">
+                    <h4 style="color: #1e293b; margin-bottom: 1rem;">⏰ Timing Analysis</h4>
+                    <ul style="margin: 0; padding-left: 1.5rem; color: #475569;">
+                        <li>Review clustering detection</li>
+                        <li>Unnatural posting patterns</li>
+                        <li>Coordinated review campaigns</li>
+                        <li>Time-based anomalies</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Key Features -->
+        <div class="card">
+            <h2>✨ Key Features</h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-top: 1.5rem;">
+                <div style="background: linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%); padding: 1.5rem; border-radius: 12px; border-left: 4px solid #10b981;">
+                    <h4 style="color: #047857; margin-bottom: 0.5rem;">🎯 Multi-Platform Support</h4>
+                    <p style="margin: 0; color: #065f46;">Analyze products from Amazon, Flipkart, and other major e-commerce platforms with unified interface.</p>
+                </div>
+                
+                <div style="background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%); padding: 1.5rem; border-radius: 12px; border-left: 4px solid #3b82f6;">
+                    <h4 style="color: #1d4ed8; margin-bottom: 0.5rem;">📊 Detailed Analytics</h4>
+                    <p style="margin: 0; color: #1e3a8a;">Comprehensive trust scores, fake review percentages, and detailed statistical breakdowns.</p>
+                </div>
+                
+                <div style="background: linear-gradient(135deg, #fef7ff 0%, #f3e8ff 100%); padding: 1.5rem; border-radius: 12px; border-left: 4px solid #8b5cf6;">
+                    <h4 style="color: #7c3aed; margin-bottom: 0.5rem;">💾 History Tracking</h4>
+                    <p style="margin: 0; color: #581c87;">Save and track your analysis history with search, sort, and export capabilities.</p>
+                </div>
+                
+                <div style="background: linear-gradient(135deg, #fefce8 0%, #fef3c7 100%); padding: 1.5rem; border-radius: 12px; border-left: 4px solid #f59e0b;">
+                    <h4 style="color: #d97706; margin-bottom: 0.5rem;">🎨 Multiple Themes</h4>
+                    <p style="margin: 0; color: #92400e;">Choose from Purple, Blue, Green, and Dark themes to customize your experience.</p>
+                </div>
+                
+                <div style="background: linear-gradient(135deg, #fdf2f8 0%, #fce7f3 100%); padding: 1.5rem; border-radius: 12px; border-left: 4px solid #ec4899;">
+                    <h4 style="color: #be185d; margin-bottom: 0.5rem;">📱 PWA Ready</h4>
+                    <p style="margin: 0; color: #9d174d;">Progressive Web App with offline capabilities and native app-like experience.</p>
+                </div>
+                
+                <div style="background: linear-gradient(135deg, #f0fdfa 0%, #ccfbf1 100%); padding: 1.5rem; border-radius: 12px; border-left: 4px solid #14b8a6;">
+                    <h4 style="color: #0f766e; margin-bottom: 0.5rem;">🔒 Privacy First</h4>
+                    <p style="margin: 0; color: #134e4a;">All data stored locally in your browser. No personal information collected or transmitted.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Technology Stack -->
+        <div class="card">
+            <h2>🛠️ Technology Stack</h2>
+            <p>Built with modern web technologies for optimal performance and user experience:</p>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin-top: 2rem;">
+                <div style="background: linear-gradient(135deg, #fff7ed 0%, #fed7aa 100%); padding: 1.5rem; border-radius: 12px; text-align: center;">
+                    <div style="font-size: 2.5rem; margin-bottom: 0.5rem;">🌐</div>
+                    <h4 style="color: #c2410c; margin-bottom: 0.5rem;">Frontend</h4>
+                    <p style="margin: 0; color: #9a3412; font-weight: 500;">HTML5, CSS3, Vanilla JavaScript</p>
+                </div>
+                
+                <div style="background: linear-gradient(135deg, #ecfdf5 0%, #a7f3d0 100%); padding: 1.5rem; border-radius: 12px; text-align: center;">
+                    <div style="font-size: 2.5rem; margin-bottom: 0.5rem;">🎨</div>
+                    <h4 style="color: #047857; margin-bottom: 0.5rem;">Styling</h4>
+                    <p style="margin: 0; color: #065f46; font-weight: 500;">CSS Grid, Flexbox, Gradients, Animations</p>
+                </div>
+                
+                <div style="background: linear-gradient(135deg, #eff6ff 0%, #bfdbfe 100%); padding: 1.5rem; border-radius: 12px; text-align: center;">
+                    <div style="font-size: 2.5rem; margin-bottom: 0.5rem;">💾</div>
+                    <h4 style="color: #1d4ed8; margin-bottom: 0.5rem;">Storage</h4>
+                    <p style="margin: 0; color: #1e3a8a; font-weight: 500;">LocalStorage, Session Management</p>
+                </div>
+                
+                <div style="background: linear-gradient(135deg, #fef7ff 0%, #e9d5ff 100%); padding: 1.5rem; border-radius: 12px; text-align: center;">
+                    <div style="font-size: 2.5rem; margin-bottom: 0.5rem;">📱</div>
+                    <h4 style="color: #7c3aed; margin-bottom: 0.5rem;">PWA</h4>
+                    <p style="margin: 0; color: #581c87; font-weight: 500;">Service Workers, Web Manifest</p>
+                </div>
+                
+                <div style="background: linear-gradient(135deg, #fefce8 0%, #fde047 100%); padding: 1.5rem; border-radius: 12px; text-align: center;">
+                    <div style="font-size: 2.5rem; margin-bottom: 0.5rem;">🚀</div>
+                    <h4 style="color: #a16207; margin-bottom: 0.5rem;">Deployment</h4>
+                    <p style="margin: 0; color: #92400e; font-weight: 500;">Netlify, CDN, Auto-deployment</p>
+                </div>
+                
+                <div style="background: linear-gradient(135deg, #f0fdf4 0%, #86efac 100%); padding: 1.5rem; border-radius: 12px; text-align: center;">
+                    <div style="font-size: 2.5rem; margin-bottom: 0.5rem;">🔧</div>
+                    <h4 style="color: #15803d; margin-bottom: 0.5rem;">Tools</h4>
+                    <p style="margin: 0; color: #166534; font-weight: 500;">Git, VS Code, Chrome DevTools</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Algorithm Details -->
+        <div class="card">
+            <h2>🧠 Detection Algorithm</h2>
+            <p>Our fake review detection system uses a multi-layered approach combining various analytical techniques:</p>
+            
+            <div style="margin-top: 2rem;">
+                <div style="background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%); padding: 2rem; border-radius: 12px; border: 1px solid #e2e8f0; margin-bottom: 1.5rem;">
+                    <h4 style="color: #1e293b; margin-bottom: 1rem;">🔍 Step 1: Data Collection</h4>
+                    <p style="color: #475569; margin-bottom: 1rem;">Extract product information, reviews, ratings, and metadata from the provided URL.</p>
+                    <div style="background: rgba(59, 130, 246, 0.1); padding: 1rem; border-radius: 8px; border-left: 4px solid #3b82f6;">
+                        <code style="color: #1e40af;">URL Parsing → Product ID → Review Extraction → Metadata Collection</code>
+                    </div>
+                </div>
+                
+                <div style="background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%); padding: 2rem; border-radius: 12px; border: 1px solid #e2e8f0; margin-bottom: 1.5rem;">
+                    <h4 style="color: #1e293b; margin-bottom: 1rem;">⚡ Step 2: Pattern Analysis</h4>
+                    <p style="color: #475569; margin-bottom: 1rem;">Analyze review patterns, language usage, and statistical anomalies.</p>
+                    <div style="background: rgba(16, 185, 129, 0.1); padding: 1rem; border-radius: 8px; border-left: 4px solid #10b981;">
+                        <code style="color: #047857;">Text Processing → Sentiment Analysis → Pattern Recognition → Anomaly Detection</code>
+                    </div>
+                </div>
+                
+                <div style="background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%); padding: 2rem; border-radius: 12px; border: 1px solid #e2e8f0;">
+                    <h4 style="color: #1e293b; margin-bottom: 1rem;">📊 Step 3: Trust Score Calculation</h4>
+                    <p style="color: #475569; margin-bottom: 1rem;">Generate final trust score based on weighted analysis of all factors.</p>
+                    <div style="background: rgba(139, 92, 246, 0.1); padding: 1rem; border-radius: 8px; border-left: 4px solid #8b5cf6;">
+                        <code style="color: #7c3aed;">Weight Assignment → Score Calculation → Confidence Rating → Final Output</code>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Performance & Accessibility -->
+        <div class="card">
+            <h2>⚡ Performance & Accessibility</h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin-top: 1.5rem;">
+                <div style="background: linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%); padding: 1.5rem; border-radius: 12px;">
+                    <h4 style="color: #047857; margin-bottom: 1rem;">🚀 Performance Optimized</h4>
+                    <ul style="margin: 0; padding-left: 1.5rem; color: #065f46;">
+                        <li>Lazy loading for images</li>
+                        <li>Optimized CSS and JavaScript</li>
+                        <li>Efficient DOM manipulation</li>
+                        <li>Minimal external dependencies</li>
+                        <li>Fast loading times</li>
+                    </ul>
+                </div>
+                
+                <div style="background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%); padding: 1.5rem; border-radius: 12px;">
+                    <h4 style="color: #1d4ed8; margin-bottom: 1rem;">♿ Accessibility Features</h4>
+                    <ul style="margin: 0; padding-left: 1.5rem; color: #1e3a8a;">
+                        <li>WCAG 2.1 AA compliance</li>
+                        <li>Keyboard navigation support</li>
+                        <li>Screen reader compatibility</li>
+                        <li>High contrast mode support</li>
+                        <li>Focus indicators</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Educational Notice -->
+        <div class="card" style="background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%); border: 2px solid #f59e0b;">
+            <h2 style="color: #92400e;">⚠️ Educational Notice</h2>
+            <p style="color: #92400e; margin-bottom: 1rem;"><strong>This is a demonstration application designed for educational purposes.</strong></p>
+            
+            <div style="background: rgba(255, 255, 255, 0.7); padding: 1.5rem; border-radius: 8px; margin-top: 1rem;">
+                <h4 style="color: #92400e; margin-bottom: 1rem;">Important Information:</h4>
+                <ul style="margin: 0; padding-left: 1.5rem; color: #92400e;">
+                    <li><strong>Simulated Data:</strong> Uses generated review data for demonstration</li>
+                    <li><strong>Educational Purpose:</strong> Designed to teach web development and algorithms</li>
+                    <li><strong>No Real Scraping:</strong> Does not perform actual web scraping (which would violate ToS)</li>
+                    <li><strong>Learning Tool:</strong> Perfect for understanding fake review detection concepts</li>
+                    <li><strong>Not for Purchase Decisions:</strong> Results should not be used for actual buying decisions</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Future Enhancements -->
+        <div class="card">
+            <h2>🔮 Future Enhancements</h2>
+            <p>Planned features and improvements for future versions:</p>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-top: 1.5rem;">
+                <div style="background: linear-gradient(135deg, #fdf2f8 0%, #fce7f3 100%); padding: 1.5rem; border-radius: 12px; border-left: 4px solid #ec4899;">
+                    <h4 style="color: #be185d; margin-bottom: 0.5rem;">🤖 AI Integration</h4>
+                    <p style="margin: 0; color: #9d174d;">Machine learning models for improved detection accuracy and natural language processing.</p>
+                </div>
+                
+                <div style="background: linear-gradient(135deg, #f0fdfa 0%, #ccfbf1 100%); padding: 1.5rem; border-radius: 12px; border-left: 4px solid #14b8a6;">
+                    <h4 style="color: #0f766e; margin-bottom: 0.5rem;">📈 Advanced Analytics</h4>
+                    <p style="margin: 0; color: #134e4a;">Detailed charts, trend analysis, and comparative product insights.</p>
+                </div>
+                
+                <div style="background: linear-gradient(135deg, #fefce8 0%, #fef3c7 100%); padding: 1.5rem; border-radius: 12px; border-left: 4px solid #f59e0b;">
+                    <h4 style="color: #d97706; margin-bottom: 0.5rem;">🌐 More Platforms</h4>
+                    <p style="margin: 0; color: #92400e;">Support for additional e-commerce platforms and international marketplaces.</p>
+                </div>
+                
+                <div style="background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%); padding: 1.5rem; border-radius: 12px; border-left: 4px solid #0ea5e9;">
+                    <h4 style="color: #0369a1; margin-bottom: 0.5rem;">🔔 Notifications</h4>
+                    <p style="margin: 0; color: #0c4a6e;">Price alerts, review monitoring, and trust score change notifications.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Contact & Support -->
+        <div class="card">
+            <h2>📞 Contact & Support</h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin-top: 1.5rem;">
+                <div style="background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%); padding: 1.5rem; border-radius: 12px; text-align: center;">
+                    <div style="font-size: 2rem; margin-bottom: 0.5rem;">💬</div>
+                    <h4 style="color: #1e293b; margin-bottom: 0.5rem;">Feedback</h4>
+                    <p style="margin: 0; color: #475569;">Share your thoughts and suggestions for improvement</p>
+                </div>
+                
+                <div style="background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%); padding: 1.5rem; border-radius: 12px; text-align: center;">
+                    <div style="font-size: 2rem; margin-bottom: 0.5rem;">🐛</div>
+                    <h4 style="color: #1e293b; margin-bottom: 0.5rem;">Bug Reports</h4>
+                    <p style="margin: 0; color: #475569;">Report issues or unexpected behavior</p>
+                </div>
+                
+                <div style="background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%); padding: 1.5rem; border-radius: 12px; text-align: center;">
+                    <div style="font-size: 2rem; margin-bottom: 0.5rem;">🤝</div>
+                    <h4 style="color: #1e293b; margin-bottom: 0.5rem;">Contribute</h4>
+                    <p style="margin: 0; color: #475569;">Help improve the project with code contributions</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="card text-center" style="background: linear-gradient(135deg, #1f2937 0%, #111827 100%); color: white;">
+            <div style="margin-bottom: 2rem;">
+                <h3 style="color: #f9fafb; margin-bottom: 1rem;">Product Trust Analyzer</h3>
+                <p style="color: #d1d5db; margin-bottom: 1rem;">Educational project demonstrating modern web development and fake review detection algorithms</p>
+            </div>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; margin-bottom: 2rem; text-align: left;">
+                <div>
+                    <h4 style="color: #f9fafb; margin-bottom: 0.5rem;">Technologies</h4>
+                    <ul style="list-style: none; padding: 0; margin: 0; color: #d1d5db;">
+                        <li>• HTML5 & CSS3</li>
+                        <li>• Vanilla JavaScript</li>
+                        <li>• Progressive Web App</li>
+                        <li>• Responsive Design</li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 style="color: #f9fafb; margin-bottom: 0.5rem;">Features</h4>
+                    <ul style="list-style: none; padding: 0; margin: 0; color: #d1d5db;">
+                        <li>• Fake Review Detection</li>
+                        <li>• Trust Score Analysis</li>
+                        <li>• History Tracking</li>
+                        <li>• Multiple Themes</li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 style="color: #f9fafb; margin-bottom: 0.5rem;">Educational</h4>
+                    <ul style="list-style: none; padding: 0; margin: 0; color: #d1d5db;">
+                        <li>• Learning Project</li>
+                        <li>• Open Source</li>
+                        <li>• Algorithm Demo</li>
+                        <li>• Best Practices</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div style="border-top: 1px solid #374151; padding-top: 1.5rem;">
+                <p style="color: #9ca3af; margin-bottom: 1rem;">&copy; 2024 Product Trust Analyzer. Educational project for learning web development.</p>
+                <p style="color: #f9fafb; margin-bottom: 1rem;"><strong>Made with ❤️ using modern web technologies</strong></p>
+                
+                <div style="display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap; margin-top: 1rem;">
+                    <a href="https://github.com/Drona-Balasara/Fake-Review-Analyzer-Amazon-Flipkart" target="_blank" style="color: #60a5fa; text-decoration: none; display: flex; align-items: center; gap: 0.5rem;">
+                        <span>📂</span> GitHub Repository
+                    </a>
+                    <a href="https://netlify.com" target="_blank" style="color: #34d399; text-decoration: none; display: flex; align-items: center; gap: 0.5rem;">
+                        <span>🚀</span> Powered by Netlify
+                    </a>
+                    <a href="https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps" target="_blank" style="color: #fbbf24; text-decoration: none; display: flex; align-items: center; gap: 0.5rem;">
+                        <span>📱</span> PWA Technology
+                    </a>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="js/main.js"></script>
+</body>
+</html>

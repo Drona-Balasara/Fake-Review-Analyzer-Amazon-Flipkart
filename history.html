@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analysis History - Product Trust Analyzer</title>
+    <meta name="description" content="View your product analysis history and statistics">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#8b5cf6">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://product-trust-analyzer.netlify.app/history.html">
+    <meta property="og:title" content="Analysis History - Product Trust Analyzer">
+    <meta property="og:description" content="View your product analysis history and statistics">
+    <meta property="og:image" content="https://product-trust-analyzer.netlify.app/assets/og-image.png">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://product-trust-analyzer.netlify.app/history.html">
+    <meta property="twitter:title" content="Analysis History - Product Trust Analyzer">
+    <meta property="twitter:description" content="View your product analysis history and statistics">
+    <meta property="twitter:image" content="https://product-trust-analyzer.netlify.app/assets/og-image.png">
+</head>
+<body>
+    <div class="container">
+        <!-- Header Section -->
+        <header class="header">
+            <h1>Analysis History</h1>
+            <p>View your product analysis history and statistics</p>
+        </header>
+
+        <!-- Navigation -->
+        <nav class="nav">
+            <a href="index.html">🏠 Home</a>
+            <a href="history.html">📊 History</a>
+            <a href="about.html">ℹ️ About</a>
+            
+            <div class="theme-switcher">
+                <button onclick="switchTheme('purple')" class="theme-btn purple-theme" title="Purple Theme">🟣</button>
+                <button onclick="switchTheme('blue')" class="theme-btn blue-theme" title="Blue Theme">🔵</button>
+                <button onclick="switchTheme('green')" class="theme-btn green-theme" title="Green Theme">🟢</button>
+                <button onclick="switchTheme('dark')" class="theme-btn dark-theme" title="Dark Theme">⚫</button>
+            </div>
+        </nav>
+
+        <!-- History Statistics -->
+        <div id="historyStats"></div>
+
+        <!-- History Controls -->
+        <div class="card">
+            <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+                <div style="display: flex; gap: 1rem; align-items: center; flex-wrap: wrap;">
+                    <input type="text" id="historySearch" placeholder="Search products..." style="padding: 8px 12px; border: 1px solid #ddd; border-radius: 8px; width: 200px;">
+                    <select id="historySort" style="padding: 8px 12px; border: 1px solid #ddd; border-radius: 8px;">
+                        <option value="date-desc">Newest First</option>
+                        <option value="date-asc">Oldest First</option>
+                        <option value="trust-high">Highest Trust Score</option>
+                        <option value="trust-low">Lowest Trust Score</option>
+                        <option value="fake-high">Most Fake Reviews</option>
+                        <option value="fake-low">Least Fake Reviews</option>
+                    </select>
+                </div>
+                <div style="display: flex; gap: 0.5rem;">
+                    <button onclick="exportHistory()" style="background: #10b981; color: white; padding: 8px 16px; border: none; border-radius: 8px; cursor: pointer;">
+                        📥 Export
+                    </button>
+                    <button onclick="importHistory()" style="background: #3b82f6; color: white; padding: 8px 16px; border: none; border-radius: 8px; cursor: pointer;">
+                        📤 Import
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- History Container -->
+        <div id="historyContainer">
+            <!-- History will be loaded here by JavaScript -->
+        </div>
+
+        <!-- Footer -->
+        <footer class="card text-center">
+            <p>&copy; 2024 Product Trust Analyzer. Educational project for learning web development.</p>
+            <p><strong>Note:</strong> History is stored locally in your browser. Clear browser data will remove history.</p>
+        </footer>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="js/main.js"></script>
+    <script src="js/history.js"></script>
+</body>
+</html>
