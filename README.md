@@ -36,7 +36,7 @@ A modern web application that analyzes product reviews from Amazon and Flipkart 
 ## 🚀 Quick Start
 
 ### Option 1: View Live Demo
-Visit [https://product-trust-analyzer.netlify.app](https://product-trust-analyzer.netlify.app)
+Visit [https://product-trust-analyzer.netlify.app](https://fake-review-analyzer.netlify.app/)
 
 ### Option 2: Run Locally
 ```bash
