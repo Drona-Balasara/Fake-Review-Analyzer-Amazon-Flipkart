@@ -225,4 +225,4 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 **⚠️ Educational Notice**: This is a demonstration application that uses simulated data for educational purposes. Results should not be used for actual purchase decisions.
 
-**Made with ❤️ by [Your Name](https://github.com/yourusername)**
+**Made with ❤️ by [Drona Balasara](https://github.com/Drona-Balasara)**
