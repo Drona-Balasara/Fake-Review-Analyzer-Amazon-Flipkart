@@ -1,13 +1,3 @@
-# 🔍 Product Trust Analyzer
-
-[![Netlify Status](https://api.netlify.com/api/v1/badges/your-badge-id/deploy-status)](https://app.netlify.com/sites/your-site-name/deploys)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![JavaScript](https://img.shields.io/badge/JavaScript-ES6+-yellow.svg)](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
-[![HTML5](https://img.shields.io/badge/HTML5-E34F26?logo=html5&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/HTML)
-[![CSS3](https://img.shields.io/badge/CSS3-1572B6?logo=css3&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/CSS)
-
-> **Live Demo**:  https://fake-review-analyzer.netlify.app/
-
 A modern web application that analyzes product reviews from Amazon and Flipkart to detect fake reviews and provide trust ratings. Built with vanilla JavaScript for optimal performance and deployed on Netlify for global accessibility.
 
 ## ✨ Features
@@ -35,10 +25,6 @@ A modern web application that analyzes product reviews from Amazon and Flipkart 
 
 ## 🚀 Quick Start
 
-### Option 1: View Live Demo
-Visit [https://product-trust-analyzer.netlify.app](https://fake-review-analyzer.netlify.app/)
-
-### Option 2: Run Locally
 ```bash
 # Clone the repository
 git clone https://github.com/yourusername/product-trust-analyzer.git
