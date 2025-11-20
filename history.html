@@ -1,92 +1,306 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Analysis History - Product Trust Analyzer</title>
-    <meta name="description" content="View your product analysis history and statistics">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="manifest" href="manifest.json">
-    <meta name="theme-color" content="#8b5cf6">
-    
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://product-trust-analyzer.netlify.app/history.html">
-    <meta property="og:title" content="Analysis History - Product Trust Analyzer">
-    <meta property="og:description" content="View your product analysis history and statistics">
-    <meta property="og:image" content="https://product-trust-analyzer.netlify.app/assets/og-image.png">
-
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://product-trust-analyzer.netlify.app/history.html">
-    <meta property="twitter:title" content="Analysis History - Product Trust Analyzer">
-    <meta property="twitter:description" content="View your product analysis history and statistics">
-    <meta property="twitter:image" content="https://product-trust-analyzer.netlify.app/assets/og-image.png">
+    <meta name="description" content="View your previous product review analyses and trust ratings">
+    <link rel="stylesheet" href="css/tokens.css?v=2.0">
+    <link rel="stylesheet" href="css/reset.css?v=2.0">
+    <link rel="stylesheet" href="css/layout.css?v=2.0">
+    <link rel="stylesheet" href="css/components.css?v=2.0">
+    <link rel="stylesheet" href="css/pages.css?v=2.0">
+    <link rel="stylesheet" href="css/responsive.css?v=2.0">
 </head>
 <body>
-    <div class="container">
-        <!-- Header Section -->
-        <header class="header">
-            <h1>Analysis History</h1>
-            <p>View your product analysis history and statistics</p>
-        </header>
-
-        <!-- Navigation -->
-        <nav class="nav">
-            <a href="index.html">🏠 Home</a>
-            <a href="history.html">📊 History</a>
-            <a href="about.html">ℹ️ About</a>
+    <!-- Top Bar Navigation -->
+    <nav class="top-bar" role="navigation" aria-label="Main navigation">
+        <div class="top-bar__left">
+            <a href="index.html" class="brand-logo">
+                <span class="brand-icon">🔍</span>
+                <span class="brand-name">Product Trust Analyzer</span>
+            </a>
+        </div>
+        
+        <div class="top-bar__center">
+            <div class="breadcrumb" aria-label="Breadcrumb">
+                <div class="breadcrumb__item">
+                    <a href="index.html" class="breadcrumb__link">Home</a>
+                    <span class="breadcrumb__separator">›</span>
+                </div>
+                <div class="breadcrumb__item">
+                    <span class="breadcrumb__current">History</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="top-bar__right">
+            <button class="icon-btn" aria-label="Toggle theme" data-action="theme-toggle" onclick="toggleTheme()">
+                <span class="icon" id="themeIcon">🌙</span>
+            </button>
+            <a href="about.html" class="icon-btn" aria-label="About">
+                <span class="icon">ℹ️</span>
+            </a>
             
-            <div class="theme-switcher">
-                <button onclick="switchTheme('purple')" class="theme-btn purple-theme" title="Purple Theme">🟣</button>
-                <button onclick="switchTheme('blue')" class="theme-btn blue-theme" title="Blue Theme">🔵</button>
-                <button onclick="switchTheme('green')" class="theme-btn green-theme" title="Green Theme">🟢</button>
-                <button onclick="switchTheme('dark')" class="theme-btn dark-theme" title="Dark Theme">⚫</button>
-            </div>
-        </nav>
-
-        <!-- History Statistics -->
-        <div id="historyStats"></div>
-
-        <!-- History Controls -->
-        <div class="card">
-            <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
-                <div style="display: flex; gap: 1rem; align-items: center; flex-wrap: wrap;">
-                    <input type="text" id="historySearch" placeholder="Search products..." style="padding: 8px 12px; border: 1px solid #ddd; border-radius: 8px; width: 200px;">
-                    <select id="historySort" style="padding: 8px 12px; border: 1px solid #ddd; border-radius: 8px;">
-                        <option value="date-desc">Newest First</option>
-                        <option value="date-asc">Oldest First</option>
-                        <option value="trust-high">Highest Trust Score</option>
-                        <option value="trust-low">Lowest Trust Score</option>
-                        <option value="fake-high">Most Fake Reviews</option>
-                        <option value="fake-low">Least Fake Reviews</option>
-                    </select>
-                </div>
-                <div style="display: flex; gap: 0.5rem;">
-                    <button onclick="exportHistory()" style="background: #10b981; color: white; padding: 8px 16px; border: none; border-radius: 8px; cursor: pointer;">
-                        📥 Export
-                    </button>
-                    <button onclick="importHistory()" style="background: #3b82f6; color: white; padding: 8px 16px; border: none; border-radius: 8px; cursor: pointer;">
-                        📤 Import
-                    </button>
+            <!-- Navigation Links -->
+            <div class="profile-menu">
+                <div class="auth-links">
+                    <a href="index.html" class="auth-link">Home</a>
+                    <a href="about.html" class="auth-link">About</a>
                 </div>
             </div>
         </div>
+    </nav>
+    
+    <!-- Progress Strip -->
+    <div class="progress-strip" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" aria-label="Loading progress">
+        <div class="progress-strip__fill"></div>
+    </div>
+    
+    <div class="container">
+        <!-- Page Header -->
+        <section style="padding: var(--space-10) 0 var(--space-6) 0;">
+            <div class="section-header">
+                <span class="section-header__eyebrow">Analysis History</span>
+                <h1 class="section-header__title">Your Previous Analyses</h1>
+                <p class="section-header__description">
+                    View all your previous product analyses and trust ratings. Click any item to re-analyze with updated data.
+                </p>
+            </div>
+            
+            <div style="display: flex; gap: var(--space-3); margin-top: var(--space-6);">
+                <button onclick="clearHistory()" class="btn btn--secondary">
+                    <span class="btn__text">Clear All History</span>
+                    <span class="btn__icon">🗑️</span>
+                </button>
+            </div>
+        </section>
 
-        <!-- History Container -->
-        <div id="historyContainer">
-            <!-- History will be loaded here by JavaScript -->
+        <!-- Loading Indicator -->
+        <div id="loading" class="loading" style="display: none;">
+            <div class="skeleton-loader">
+                <div class="skeleton-loader__line" style="width: 80%;"></div>
+                <div class="skeleton-loader__line" style="width: 60%;"></div>
+                <div class="skeleton-loader__line" style="width: 90%;"></div>
+            </div>
         </div>
+
+        <!-- History List -->
+        <section class="results-section">
+            <div id="historyContainer" class="history-list">
+                <!-- History items will be loaded here by JavaScript -->
+            </div>
+        </section>
+        
+        <!-- Statistics -->
+        <section class="results-section">
+            <h2 class="results-section__title">Statistics</h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: var(--space-6);">
+                <div style="text-align: center;">
+                    <div id="totalAnalyses" style="font-size: var(--text-4xl); font-weight: var(--font-bold); color: var(--brand); margin-bottom: var(--space-2);">0</div>
+                    <div style="font-size: var(--text-sm); color: var(--muted);">Total Analyses</div>
+                </div>
+                <div style="text-align: center;">
+                    <div id="avgTrustScore" style="font-size: var(--text-4xl); font-weight: var(--font-bold); color: var(--good); margin-bottom: var(--space-2);">0.0</div>
+                    <div style="font-size: var(--text-sm); color: var(--muted);">Average Trust Score</div>
+                </div>
+                <div style="text-align: center;">
+                    <div id="avgFakePercentage" style="font-size: var(--text-4xl); font-weight: var(--font-bold); color: var(--warn); margin-bottom: var(--space-2);">0.0%</div>
+                    <div style="font-size: var(--text-sm); color: var(--muted);">Average Fake Reviews</div>
+                </div>
+                <div style="text-align: center;">
+                    <div id="mostTrustedPlatform" style="font-size: var(--text-4xl); font-weight: var(--font-bold); color: var(--accent); margin-bottom: var(--space-2);">-</div>
+                    <div style="font-size: var(--text-sm); color: var(--muted);">Most Trusted Platform</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tips & Insights -->
+        <section class="results-section">
+            <h2 class="results-section__title">Tips & Insights</h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: var(--space-6);">
+                <div>
+                    <div style="display: flex; align-items: center; gap: var(--space-2); margin-bottom: var(--space-3);">
+                        <span style="font-size: var(--text-2xl);">📊</span>
+                        <h3 style="font-size: var(--text-lg); font-weight: var(--font-semibold); color: var(--text);">Analysis Tips</h3>
+                    </div>
+                    <ul style="list-style: none; padding: 0; color: var(--muted); font-size: var(--text-sm); line-height: var(--leading-relaxed);">
+                        <li style="margin-bottom: var(--space-2);">• Re-analyze products periodically for updated data</li>
+                        <li style="margin-bottom: var(--space-2);">• Compare trust scores between similar products</li>
+                        <li>• Look for patterns in your purchase history</li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <div style="display: flex; align-items: center; gap: var(--space-2); margin-bottom: var(--space-3);">
+                        <span style="font-size: var(--text-2xl);">🔍</span>
+                        <h3 style="font-size: var(--text-lg); font-weight: var(--font-semibold); color: var(--text);">What to Look For</h3>
+                    </div>
+                    <ul style="list-style: none; padding: 0; color: var(--muted); font-size: var(--text-sm); line-height: var(--leading-relaxed);">
+                        <li style="margin-bottom: var(--space-2);">• Trust scores above 70 are generally reliable</li>
+                        <li style="margin-bottom: var(--space-2);">• Fake review percentages below 15% are acceptable</li>
+                        <li>• Balanced star distributions indicate authenticity</li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <div style="display: flex; align-items: center; gap: var(--space-2); margin-bottom: var(--space-3);">
+                        <span style="font-size: var(--text-2xl);">⚠️</span>
+                        <h3 style="font-size: var(--text-lg); font-weight: var(--font-semibold); color: var(--text);">Red Flags</h3>
+                    </div>
+                    <ul style="list-style: none; padding: 0; color: var(--muted); font-size: var(--text-sm); line-height: var(--leading-relaxed);">
+                        <li style="margin-bottom: var(--space-2);">• More than 30% fake reviews detected</li>
+                        <li style="margin-bottom: var(--space-2);">• Trust scores below 40</li>
+                        <li>• Unusual spikes in 5-star ratings</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
 
         <!-- Footer -->
-        <footer class="card text-center">
-            <p>&copy; 2024 Product Trust Analyzer. Educational project for learning web development.</p>
-            <p><strong>Note:</strong> History is stored locally in your browser. Clear browser data will remove history.</p>
+        <footer style="padding: var(--space-10) 0; border-top: 1px solid var(--border-color); text-align: center; color: var(--muted);">
+            <p style="margin-bottom: var(--space-2);">&copy; 2024 Product Trust Analyzer. Educational project for learning web development.</p>
+            <p style="font-size: var(--text-sm);"><strong>Privacy:</strong> Your search history is stored locally and associated with your IP address only.</p>
         </footer>
     </div>
 
     <!-- JavaScript -->
-    <script src="js/main.js"></script>
-    <script src="js/history.js"></script>
+    <script src="js/animations.js?v=2.0"></script>
+    <script src="js/main.js?v=2.0"></script>
+    <script src="js/history.js?v=2.0"></script>
+    <script>
+        // Load history on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            loadHistory();
+        });
+        
+        // Theme toggle function
+        function toggleTheme() {
+            const html = document.documentElement;
+            const currentTheme = html.getAttribute('data-theme') || 'dark';
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            html.setAttribute('data-theme', newTheme);
+            
+            const themeIcon = document.getElementById('themeIcon');
+            if (themeIcon) {
+                themeIcon.textContent = newTheme === 'dark' ? '🌙' : '☀️';
+            }
+            
+            localStorage.setItem('theme', newTheme);
+        }
+        
+        // Load saved theme
+        document.addEventListener('DOMContentLoaded', function() {
+            const savedTheme = localStorage.getItem('theme') || 'dark';
+            document.documentElement.setAttribute('data-theme', savedTheme);
+            const themeIcon = document.getElementById('themeIcon');
+            if (themeIcon) {
+                themeIcon.textContent = savedTheme === 'dark' ? '🌙' : '☀️';
+            }
+        });
+        
+        // Enhanced history display
+        function displayHistory(history) {
+            const container = document.getElementById('historyContainer');
+            if (!container) return;
+            
+            updateStatistics(history);
+            
+            if (history.length === 0) {
+                container.innerHTML = `
+                    <div class="empty-state">
+                        <div class="empty-state__icon">📊</div>
+                        <h3 class="empty-state__title">No Analysis History</h3>
+                        <p class="empty-state__description">You haven't analyzed any products yet.</p>
+                        <a href="index.html" class="btn btn--primary" style="margin-top: var(--space-4);">
+                            <span class="btn__text">Analyze Your First Product</span>
+                            <span class="btn__icon">→</span>
+                        </a>
+                    </div>
+                `;
+                return;
+            }
+            
+            let html = '';
+            history.forEach(item => {
+                const platform = item.product_url && item.product_url.includes('amazon') ? 'Amazon' : 'Flipkart';
+                const platformIcon = platform === 'Amazon' ? '🛒' : '🛍️';
+                const trustScore = item.trust_score || 0;
+                const scoreClass = trustScore >= 7 ? 'score-chip--good' : trustScore >= 4 ? 'score-chip--warn' : 'score-chip--bad';
+                const fakePercentage = item.fake_percentage || 0;
+                const fakeClass = fakePercentage < 15 ? 'score-chip--good' : fakePercentage < 30 ? 'score-chip--warn' : 'score-chip--bad';
+                
+                html += `
+                    <div class="history-item" onclick="reanalyze('${item.product_url || ''}')">
+                        <div class="history-item__favicon">${platformIcon}</div>
+                        <div class="history-item__info">
+                            <div class="history-item__title">${item.product_title || 'Unknown Product'}</div>
+                            <div class="history-item__date">${item.formatted_date || new Date(item.timestamp || Date.now()).toLocaleDateString()}</div>
+                        </div>
+                        <div class="history-item__chips">
+                            <span class="score-chip ${scoreClass}">Score: ${Math.round(trustScore * 10)}</span>
+                            <span class="score-chip ${fakeClass}">Fake: ${Math.round(fakePercentage)}%</span>
+                        </div>
+                        <div class="history-item__chevron">›</div>
+                    </div>
+                `;
+            });
+            
+            container.innerHTML = html;
+        }
+
+        function updateStatistics(history) {
+            const totalAnalyses = document.getElementById('totalAnalyses');
+            const avgTrustScore = document.getElementById('avgTrustScore');
+            const avgFakePercentage = document.getElementById('avgFakePercentage');
+            const mostTrustedPlatform = document.getElementById('mostTrustedPlatform');
+            
+            if (history.length === 0) {
+                totalAnalyses.textContent = '0';
+                avgTrustScore.textContent = '0.0';
+                avgFakePercentage.textContent = '0.0%';
+                mostTrustedPlatform.textContent = '-';
+                return;
+            }
+            
+            const totalTrustScore = history.reduce((sum, item) => sum + (item.trust_score || 0), 0);
+            const totalFakePercentage = history.reduce((sum, item) => sum + (item.fake_percentage || 0), 0);
+            
+            const avgTrust = totalTrustScore / history.length;
+            const avgFake = totalFakePercentage / history.length;
+            
+            const platformStats = {};
+            history.forEach(item => {
+                const platform = item.product_url && item.product_url.includes('amazon') ? 'Amazon' : 'Flipkart';
+                if (!platformStats[platform]) {
+                    platformStats[platform] = { count: 0, totalTrust: 0 };
+                }
+                platformStats[platform].count++;
+                platformStats[platform].totalTrust += (item.trust_score || 0);
+            });
+            
+            let mostTrusted = '-';
+            let highestAvgTrust = 0;
+            
+            Object.keys(platformStats).forEach(platform => {
+                const avgPlatformTrust = platformStats[platform].totalTrust / platformStats[platform].count;
+                if (avgPlatformTrust > highestAvgTrust) {
+                    highestAvgTrust = avgPlatformTrust;
+                    mostTrusted = platform;
+                }
+            });
+            
+            totalAnalyses.textContent = history.length;
+            avgTrustScore.textContent = (avgTrust * 10).toFixed(1);
+            avgFakePercentage.textContent = avgFake.toFixed(1) + '%';
+            mostTrustedPlatform.textContent = mostTrusted;
+        }
+        
+        function reanalyze(url) {
+            if (url) {
+                window.location.href = `index.html?url=${encodeURIComponent(url)}`;
+            }
+        }
+    </script>
 </body>
 </html>

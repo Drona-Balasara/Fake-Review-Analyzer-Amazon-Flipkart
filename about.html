@@ -1,457 +1,285 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="en" data-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About - Product Trust Analyzer</title>
     <meta name="description" content="Learn about Product Trust Analyzer - how it works, features, and technology">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="manifest" href="manifest.json">
-    <meta name="theme-color" content="#8b5cf6">
-
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://product-trust-analyzer.netlify.app/about.html">
-    <meta property="og:title" content="About - Product Trust Analyzer">
-    <meta property="og:description"
-        content="Learn about Product Trust Analyzer - how it works, features, and technology">
-    <meta property="og:image" content="https://product-trust-analyzer.netlify.app/assets/og-image.png">
-
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://product-trust-analyzer.netlify.app/about.html">
-    <meta property="twitter:title" content="About - Product Trust Analyzer">
-    <meta property="twitter:description"
-        content="Learn about Product Trust Analyzer - how it works, features, and technology">
-    <meta property="twitter:image" content="https://product-trust-analyzer.netlify.app/assets/og-image.png">
+    <link rel="stylesheet" href="css/tokens.css?v=2.0">
+    <link rel="stylesheet" href="css/reset.css?v=2.0">
+    <link rel="stylesheet" href="css/layout.css?v=2.0">
+    <link rel="stylesheet" href="css/components.css?v=2.0">
+    <link rel="stylesheet" href="css/pages.css?v=2.0">
+    <link rel="stylesheet" href="css/responsive.css?v=2.0">
 </head>
-
 <body>
-    <div class="container">
-        <!-- Header Section -->
-        <header class="header">
-            <h1>About Product Trust Analyzer</h1>
-            <p>Understanding how we detect fake reviews and calculate trust scores</p>
-        </header>
-
-        <!-- Navigation -->
-        <nav class="nav">
-            <a href="index.html">🏠 Home</a>
-            <a href="history.html">📊 History</a>
-            <a href="about.html">ℹ️ About</a>
-
-            <div class="theme-switcher">
-                <button onclick="switchTheme('purple')" class="theme-btn purple-theme" title="Purple Theme">🟣</button>
-                <button onclick="switchTheme('blue')" class="theme-btn blue-theme" title="Blue Theme">🔵</button>
-                <button onclick="switchTheme('green')" class="theme-btn green-theme" title="Green Theme">🟢</button>
-                <button onclick="switchTheme('dark')" class="theme-btn dark-theme" title="Dark Theme">⚫</button>
-            </div>
-        </nav>
-
-        <!-- What is Product Trust Analyzer -->
-        <div class="card">
-            <h2>🔍 What is Product Trust Analyzer?</h2>
-            <p>Product Trust Analyzer is a modern web application that helps consumers make informed purchasing
-                decisions by analyzing product reviews from Amazon and Flipkart. Our advanced algorithms detect
-                potentially fake reviews and provide trust ratings to help you identify reliable products.</p>
-
-            <div
-                style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; margin-top: 2rem;">
-                <div
-                    style="background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); padding: 1.5rem; border-radius: 12px; border-left: 4px solid #10b981;">
-                    <h4 style="color: #059669; margin-bottom: 0.5rem;">🎯 Accurate Detection</h4>
-                    <p style="margin: 0; color: #065f46;">Advanced pattern recognition algorithms analyze review text,
-                        ratings, and timing patterns.</p>
+    <!-- Top Bar Navigation -->
+    <nav class="top-bar" role="navigation" aria-label="Main navigation">
+        <div class="top-bar__left">
+            <a href="index.html" class="brand-logo">
+                <span class="brand-icon">🔍</span>
+                <span class="brand-name">Product Trust Analyzer</span>
+            </a>
+        </div>
+        
+        <div class="top-bar__center">
+            <div class="breadcrumb" aria-label="Breadcrumb">
+                <div class="breadcrumb__item">
+                    <a href="index.html" class="breadcrumb__link">Home</a>
+                    <span class="breadcrumb__separator">›</span>
                 </div>
-                <div
-                    style="background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%); padding: 1.5rem; border-radius: 12px; border-left: 4px solid #3b82f6;">
-                    <h4 style="color: #1d4ed8; margin-bottom: 0.5rem;">⚡ Real-time Analysis</h4>
-                    <p style="margin: 0; color: #1e3a8a;">Instant URL validation and processing with immediate results
-                        display.</p>
-                </div>
-                <div
-                    style="background: linear-gradient(135deg, #fefce8 0%, #fef3c7 100%); padding: 1.5rem; border-radius: 12px; border-left: 4px solid #f59e0b;">
-                    <h4 style="color: #d97706; margin-bottom: 0.5rem;">📱 Mobile Friendly</h4>
-                    <p style="margin: 0; color: #92400e;">Responsive design that works perfectly on all devices and
-                        screen sizes.</p>
+                <div class="breadcrumb__item">
+                    <span class="breadcrumb__current">About</span>
                 </div>
             </div>
         </div>
+        
+        <div class="top-bar__right">
+            <button class="icon-btn" aria-label="Toggle theme" onclick="toggleTheme()">
+                <span class="icon" id="themeIcon">🌙</span>
+            </button>
+            <a href="history.html" class="icon-btn" aria-label="History">
+                <span class="icon">📊</span>
+            </a>
+        </div>
+    </nav>
+    
+    <!-- Progress Strip -->
+    <div class="progress-strip">
+        <div class="progress-strip__fill"></div>
+    </div>
+    
+    <div class="container">
+        <!-- Hero Section -->
+        <section style="padding: var(--space-10) 0;">
+            <div class="section-header" style="text-align: center; max-width: 800px; margin: 0 auto;">
+                <span class="section-header__eyebrow">About Us</span>
+                <h1 class="section-header__title">Understanding Fake Reviews</h1>
+                <p class="section-header__description">
+                    Product Trust Analyzer helps you make informed purchasing decisions by detecting fake reviews 
+                    and providing reliable trust scores for products on Amazon and Flipkart.
+                </p>
+            </div>
+        </section>
 
         <!-- How It Works -->
-        <div class="card">
-            <h2>🔬 How It Works</h2>
-            <p>Our sophisticated analysis system examines multiple factors to determine the authenticity of product
-                reviews:</p>
-
-            <div
-                style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin-top: 2rem;">
-                <div
-                    style="background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%); padding: 1.5rem; border-radius: 12px; border: 1px solid #e2e8f0;">
-                    <h4 style="color: #1e293b; margin-bottom: 1rem;">📝 Text Analysis</h4>
-                    <ul style="margin: 0; padding-left: 1.5rem; color: #475569;">
-                        <li>Language pattern detection</li>
-                        <li>Sentiment consistency analysis</li>
-                        <li>Generic vs specific content</li>
-                        <li>Grammar and spelling patterns</li>
-                    </ul>
-                </div>
-
-                <div
-                    style="background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%); padding: 1.5rem; border-radius: 12px; border: 1px solid #e2e8f0;">
-                    <h4 style="color: #1e293b; margin-bottom: 1rem;">⭐ Rating Patterns</h4>
-                    <ul style="margin: 0; padding-left: 1.5rem; color: #475569;">
-                        <li>Unusual rating distributions</li>
-                        <li>Sudden rating spikes</li>
-                        <li>Rating vs review content mismatch</li>
-                        <li>Historical rating trends</li>
-                    </ul>
-                </div>
-
-                <div
-                    style="background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%); padding: 1.5rem; border-radius: 12px; border: 1px solid #e2e8f0;">
-                    <h4 style="color: #1e293b; margin-bottom: 1rem;">⏰ Timing Analysis</h4>
-                    <ul style="margin: 0; padding-left: 1.5rem; color: #475569;">
-                        <li>Review clustering detection</li>
-                        <li>Unnatural posting patterns</li>
-                        <li>Coordinated review campaigns</li>
-                        <li>Time-based anomalies</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-
-        <!-- Key Features -->
-        <div class="card">
-            <h2>✨ Key Features</h2>
-            <div
-                style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-top: 1.5rem;">
-                <div
-                    style="background: linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%); padding: 1.5rem; border-radius: 12px; border-left: 4px solid #10b981;">
-                    <h4 style="color: #047857; margin-bottom: 0.5rem;">🎯 Multi-Platform Support</h4>
-                    <p style="margin: 0; color: #065f46;">Analyze products from Amazon, Flipkart, and other major
-                        e-commerce platforms with unified interface.</p>
-                </div>
-
-                <div
-                    style="background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%); padding: 1.5rem; border-radius: 12px; border-left: 4px solid #3b82f6;">
-                    <h4 style="color: #1d4ed8; margin-bottom: 0.5rem;">📊 Detailed Analytics</h4>
-                    <p style="margin: 0; color: #1e3a8a;">Comprehensive trust scores, fake review percentages, and
-                        detailed statistical breakdowns.</p>
-                </div>
-
-                <div
-                    style="background: linear-gradient(135deg, #fef7ff 0%, #f3e8ff 100%); padding: 1.5rem; border-radius: 12px; border-left: 4px solid #8b5cf6;">
-                    <h4 style="color: #7c3aed; margin-bottom: 0.5rem;">💾 History Tracking</h4>
-                    <p style="margin: 0; color: #581c87;">Save and track your analysis history with search, sort, and
-                        export capabilities.</p>
-                </div>
-
-                <div
-                    style="background: linear-gradient(135deg, #fefce8 0%, #fef3c7 100%); padding: 1.5rem; border-radius: 12px; border-left: 4px solid #f59e0b;">
-                    <h4 style="color: #d97706; margin-bottom: 0.5rem;">🎨 Multiple Themes</h4>
-                    <p style="margin: 0; color: #92400e;">Choose from Purple, Blue, Green, and Dark themes to customize
-                        your experience.</p>
-                </div>
-
-                <div
-                    style="background: linear-gradient(135deg, #fdf2f8 0%, #fce7f3 100%); padding: 1.5rem; border-radius: 12px; border-left: 4px solid #ec4899;">
-                    <h4 style="color: #be185d; margin-bottom: 0.5rem;">📱 PWA Ready</h4>
-                    <p style="margin: 0; color: #9d174d;">Progressive Web App with offline capabilities and native
-                        app-like experience.</p>
-                </div>
-
-                <div
-                    style="background: linear-gradient(135deg, #f0fdfa 0%, #ccfbf1 100%); padding: 1.5rem; border-radius: 12px; border-left: 4px solid #14b8a6;">
-                    <h4 style="color: #0f766e; margin-bottom: 0.5rem;">🔒 Privacy First</h4>
-                    <p style="margin: 0; color: #134e4a;">All data stored locally in your browser. No personal
-                        information collected or transmitted.</p>
-                </div>
-            </div>
-        </div>
-
-        <!-- Technology Stack -->
-        <div class="card">
-            <h2>🛠️ Technology Stack</h2>
-            <p>Built with modern web technologies for optimal performance and user experience:</p>
-
-            <div
-                style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin-top: 2rem;">
-                <div
-                    style="background: linear-gradient(135deg, #fff7ed 0%, #fed7aa 100%); padding: 1.5rem; border-radius: 12px; text-align: center;">
-                    <div style="font-size: 2.5rem; margin-bottom: 0.5rem;">🌐</div>
-                    <h4 style="color: #c2410c; margin-bottom: 0.5rem;">Frontend</h4>
-                    <p style="margin: 0; color: #9a3412; font-weight: 500;">HTML5, CSS3, Vanilla JavaScript</p>
-                </div>
-
-                <div
-                    style="background: linear-gradient(135deg, #ecfdf5 0%, #a7f3d0 100%); padding: 1.5rem; border-radius: 12px; text-align: center;">
-                    <div style="font-size: 2.5rem; margin-bottom: 0.5rem;">🎨</div>
-                    <h4 style="color: #047857; margin-bottom: 0.5rem;">Styling</h4>
-                    <p style="margin: 0; color: #065f46; font-weight: 500;">CSS Grid, Flexbox, Gradients, Animations</p>
-                </div>
-
-                <div
-                    style="background: linear-gradient(135deg, #eff6ff 0%, #bfdbfe 100%); padding: 1.5rem; border-radius: 12px; text-align: center;">
-                    <div style="font-size: 2.5rem; margin-bottom: 0.5rem;">💾</div>
-                    <h4 style="color: #1d4ed8; margin-bottom: 0.5rem;">Storage</h4>
-                    <p style="margin: 0; color: #1e3a8a; font-weight: 500;">LocalStorage, Session Management</p>
-                </div>
-
-                <div
-                    style="background: linear-gradient(135deg, #fef7ff 0%, #e9d5ff 100%); padding: 1.5rem; border-radius: 12px; text-align: center;">
-                    <div style="font-size: 2.5rem; margin-bottom: 0.5rem;">📱</div>
-                    <h4 style="color: #7c3aed; margin-bottom: 0.5rem;">PWA</h4>
-                    <p style="margin: 0; color: #581c87; font-weight: 500;">Service Workers, Web Manifest</p>
-                </div>
-
-                <div
-                    style="background: linear-gradient(135deg, #fefce8 0%, #fde047 100%); padding: 1.5rem; border-radius: 12px; text-align: center;">
-                    <div style="font-size: 2.5rem; margin-bottom: 0.5rem;">🚀</div>
-                    <h4 style="color: #a16207; margin-bottom: 0.5rem;">Deployment</h4>
-                    <p style="margin: 0; color: #92400e; font-weight: 500;">Netlify, CDN, Auto-deployment</p>
-                </div>
-
-                <div
-                    style="background: linear-gradient(135deg, #f0fdf4 0%, #86efac 100%); padding: 1.5rem; border-radius: 12px; text-align: center;">
-                    <div style="font-size: 2.5rem; margin-bottom: 0.5rem;">🔧</div>
-                    <h4 style="color: #15803d; margin-bottom: 0.5rem;">Tools</h4>
-                    <p style="margin: 0; color: #166534; font-weight: 500;">Git, VS Code, Chrome DevTools</p>
-                </div>
-            </div>
-        </div>
-
-        <!-- Algorithm Details -->
-        <div class="card">
-            <h2>🧠 Detection Algorithm</h2>
-            <p>Our fake review detection system uses a multi-layered approach combining various analytical techniques:
-            </p>
-
-            <div style="margin-top: 2rem;">
-                <div
-                    style="background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%); padding: 2rem; border-radius: 12px; border: 1px solid #e2e8f0; margin-bottom: 1.5rem;">
-                    <h4 style="color: #1e293b; margin-bottom: 1rem;">🔍 Step 1: Data Collection</h4>
-                    <p style="color: #475569; margin-bottom: 1rem;">Extract product information, reviews, ratings, and
-                        metadata from the provided URL.</p>
-                    <div
-                        style="background: rgba(59, 130, 246, 0.1); padding: 1rem; border-radius: 8px; border-left: 4px solid #3b82f6;">
-                        <code
-                            style="color: #1e40af;">URL Parsing → Product ID → Review Extraction → Metadata Collection</code>
+        <section class="results-section">
+            <h2 class="results-section__title">How It Works</h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: var(--space-8);">
+                <div>
+                    <div style="width: 56px; height: 56px; background: rgba(var(--brand-rgb), 0.1); border-radius: var(--radius-xl); display: flex; align-items: center; justify-content: center; margin-bottom: var(--space-4);">
+                        <span style="font-size: var(--text-3xl);">🔗</span>
                     </div>
+                    <h3 style="font-size: var(--text-xl); font-weight: var(--font-semibold); color: var(--text); margin-bottom: var(--space-2);">URL Analysis</h3>
+                    <p style="color: var(--muted); line-height: var(--leading-relaxed);">
+                        Simply paste any Amazon or Flipkart product URL. Our system extracts the product ID and fetches review data for analysis.
+                    </p>
                 </div>
-
-                <div
-                    style="background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%); padding: 2rem; border-radius: 12px; border: 1px solid #e2e8f0; margin-bottom: 1.5rem;">
-                    <h4 style="color: #1e293b; margin-bottom: 1rem;">⚡ Step 2: Pattern Analysis</h4>
-                    <p style="color: #475569; margin-bottom: 1rem;">Analyze review patterns, language usage, and
-                        statistical anomalies.</p>
-                    <div
-                        style="background: rgba(16, 185, 129, 0.1); padding: 1rem; border-radius: 8px; border-left: 4px solid #10b981;">
-                        <code
-                            style="color: #047857;">Text Processing → Sentiment Analysis → Pattern Recognition → Anomaly Detection</code>
+                
+                <div>
+                    <div style="width: 56px; height: 56px; background: rgba(var(--accent-rgb), 0.1); border-radius: var(--radius-xl); display: flex; align-items: center; justify-content: center; margin-bottom: var(--space-4);">
+                        <span style="font-size: var(--text-3xl);">🤖</span>
                     </div>
+                    <h3 style="font-size: var(--text-xl); font-weight: var(--font-semibold); color: var(--text); margin-bottom: var(--space-2);">Pattern Detection</h3>
+                    <p style="color: var(--muted); line-height: var(--leading-relaxed);">
+                        Advanced algorithms analyze review patterns, timing, language, and reviewer behavior to identify suspicious activity.
+                    </p>
                 </div>
-
-                <div
-                    style="background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%); padding: 2rem; border-radius: 12px; border: 1px solid #e2e8f0;">
-                    <h4 style="color: #1e293b; margin-bottom: 1rem;">📊 Step 3: Trust Score Calculation</h4>
-                    <p style="color: #475569; margin-bottom: 1rem;">Generate final trust score based on weighted
-                        analysis of all factors.</p>
-                    <div
-                        style="background: rgba(139, 92, 246, 0.1); padding: 1rem; border-radius: 8px; border-left: 4px solid #8b5cf6;">
-                        <code
-                            style="color: #7c3aed;">Weight Assignment → Score Calculation → Confidence Rating → Final Output</code>
+                
+                <div>
+                    <div style="width: 56px; height: 56px; background: rgba(var(--good-rgb), 0.1); border-radius: var(--radius-xl); display: flex; align-items: center; justify-content: center; margin-bottom: var(--space-4);">
+                        <span style="font-size: var(--text-3xl);">📊</span>
                     </div>
+                    <h3 style="font-size: var(--text-xl); font-weight: var(--font-semibold); color: var(--text); margin-bottom: var(--space-2);">Trust Score</h3>
+                    <p style="color: var(--muted); line-height: var(--leading-relaxed);">
+                        Get a comprehensive trust score (0-100) based on authenticity, fraud risk, sentiment analysis, and review volume.
+                    </p>
                 </div>
             </div>
-        </div>
+        </section>
 
-        <!-- Performance & Accessibility -->
-        <div class="card">
-            <h2>⚡ Performance & Accessibility</h2>
-            <div
-                style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin-top: 1.5rem;">
-                <div
-                    style="background: linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%); padding: 1.5rem; border-radius: 12px;">
-                    <h4 style="color: #047857; margin-bottom: 1rem;">🚀 Performance Optimized</h4>
-                    <ul style="margin: 0; padding-left: 1.5rem; color: #065f46;">
-                        <li>Lazy loading for images</li>
-                        <li>Optimized CSS and JavaScript</li>
-                        <li>Efficient DOM manipulation</li>
-                        <li>Minimal external dependencies</li>
-                        <li>Fast loading times</li>
-                    </ul>
+        <!-- Detection Methods -->
+        <section class="results-section">
+            <h2 class="results-section__title">Detection Methods</h2>
+            <div style="display: grid; gap: var(--space-4);">
+                <div class="bar-row">
+                    <div class="bar-row__label">
+                        <span class="bar-row__name">Duplicate Content Detection</span>
+                    </div>
+                    <div class="bar-row__bar">
+                        <div class="bar-row__fill bar-row__fill--good" style="width: 95%;"></div>
+                    </div>
+                    <div class="bar-row__value">95%</div>
                 </div>
-
-                <div
-                    style="background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%); padding: 1.5rem; border-radius: 12px;">
-                    <h4 style="color: #1d4ed8; margin-bottom: 1rem;">♿ Accessibility Features</h4>
-                    <ul style="margin: 0; padding-left: 1.5rem; color: #1e3a8a;">
-                        <li>WCAG 2.1 AA compliance</li>
-                        <li>Keyboard navigation support</li>
-                        <li>Screen reader compatibility</li>
-                        <li>High contrast mode support</li>
-                        <li>Focus indicators</li>
-                    </ul>
+                
+                <div class="bar-row">
+                    <div class="bar-row__label">
+                        <span class="bar-row__name">Review Burst Analysis</span>
+                    </div>
+                    <div class="bar-row__bar">
+                        <div class="bar-row__fill bar-row__fill--good" style="width: 90%;"></div>
+                    </div>
+                    <div class="bar-row__value">90%</div>
+                </div>
+                
+                <div class="bar-row">
+                    <div class="bar-row__label">
+                        <span class="bar-row__name">Sentiment Analysis</span>
+                    </div>
+                    <div class="bar-row__bar">
+                        <div class="bar-row__fill bar-row__fill--good" style="width: 88%;"></div>
+                    </div>
+                    <div class="bar-row__value">88%</div>
+                </div>
+                
+                <div class="bar-row">
+                    <div class="bar-row__label">
+                        <span class="bar-row__name">Reviewer History Check</span>
+                    </div>
+                    <div class="bar-row__bar">
+                        <div class="bar-row__fill bar-row__fill--good" style="width: 85%;"></div>
+                    </div>
+                    <div class="bar-row__value">85%</div>
+                </div>
+                
+                <div class="bar-row">
+                    <div class="bar-row__label">
+                        <span class="bar-row__name">Rating Deviation Analysis</span>
+                    </div>
+                    <div class="bar-row__bar">
+                        <div class="bar-row__fill bar-row__fill--good" style="width: 82%;"></div>
+                    </div>
+                    <div class="bar-row__value">82%</div>
                 </div>
             </div>
-        </div>
+        </section>
+
+        <!-- Features -->
+        <section class="results-section">
+            <h2 class="results-section__title">Key Features</h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: var(--space-6);">
+                <div class="score-pill score-pill--good">
+                    <span class="score-pill__label">Real-time Analysis</span>
+                    <span class="score-pill__value">⚡</span>
+                </div>
+                <div class="score-pill score-pill--good">
+                    <span class="score-pill__label">Multi-platform Support</span>
+                    <span class="score-pill__value">🌐</span>
+                </div>
+                <div class="score-pill score-pill--good">
+                    <span class="score-pill__label">Privacy Focused</span>
+                    <span class="score-pill__value">🔒</span>
+                </div>
+                <div class="score-pill score-pill--good">
+                    <span class="score-pill__label">No Registration Required</span>
+                    <span class="score-pill__value">✨</span>
+                </div>
+                <div class="score-pill score-pill--good">
+                    <span class="score-pill__label">History Tracking</span>
+                    <span class="score-pill__value">📊</span>
+                </div>
+                <div class="score-pill score-pill--good">
+                    <span class="score-pill__label">Educational Purpose</span>
+                    <span class="score-pill__value">🎓</span>
+                </div>
+            </div>
+        </section>
 
         <!-- Educational Notice -->
-        <div class="card"
-            style="background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%); border: 2px solid #f59e0b;">
-            <h2 style="color: #92400e;">⚠️ Educational Notice</h2>
-            <p style="color: #92400e; margin-bottom: 1rem;"><strong>This is a demonstration application designed for
-                    educational purposes.</strong></p>
-
-            <div style="background: rgba(255, 255, 255, 0.7); padding: 1.5rem; border-radius: 8px; margin-top: 1rem;">
-                <h4 style="color: #92400e; margin-bottom: 1rem;">Important Information:</h4>
-                <ul style="margin: 0; padding-left: 1.5rem; color: #92400e;">
-                    <li><strong>Simulated Data:</strong> Uses generated review data for demonstration</li>
-                    <li><strong>Educational Purpose:</strong> Designed to teach web development and algorithms</li>
-                    <li><strong>No Real Scraping:</strong> Does not perform actual web scraping (which would violate
-                        ToS)</li>
-                    <li><strong>Learning Tool:</strong> Perfect for understanding fake review detection concepts</li>
-                    <li><strong>Not for Purchase Decisions:</strong> Results should not be used for actual buying
-                        decisions</li>
-                </ul>
+        <section class="results-section">
+            <div class="demo-notice">
+                <div class="demo-notice__title">
+                    <span>⚠️</span>
+                    <span>Educational Demo Version</span>
+                </div>
+                <p class="demo-notice__text">
+                    This application is designed for educational purposes to demonstrate web development concepts 
+                    and fake review detection algorithms. The analysis uses simulated data and should not be used 
+                    for actual purchasing decisions. Real web scraping would violate platform Terms of Service.
+                </p>
             </div>
-        </div>
+        </section>
 
-        <!-- Future Enhancements -->
-        <div class="card">
-            <h2>🔮 Future Enhancements</h2>
-            <p>Planned features and improvements for future versions:</p>
-
-            <div
-                style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-top: 1.5rem;">
-                <div
-                    style="background: linear-gradient(135deg, #fdf2f8 0%, #fce7f3 100%); padding: 1.5rem; border-radius: 12px; border-left: 4px solid #ec4899;">
-                    <h4 style="color: #be185d; margin-bottom: 0.5rem;">🤖 AI Integration</h4>
-                    <p style="margin: 0; color: #9d174d;">Machine learning models for improved detection accuracy and
-                        natural language processing.</p>
+        <!-- Technology Stack -->
+        <section class="results-section">
+            <h2 class="results-section__title">Technology Stack</h2>
+            <div class="keyword-chips">
+                <div class="keyword-chip" data-sentiment="positive">
+                    <span class="keyword-chip__text">PHP</span>
+                    <span class="keyword-chip__sentiment">💻</span>
                 </div>
-
-                <div
-                    style="background: linear-gradient(135deg, #f0fdfa 0%, #ccfbf1 100%); padding: 1.5rem; border-radius: 12px; border-left: 4px solid #14b8a6;">
-                    <h4 style="color: #0f766e; margin-bottom: 0.5rem;">📈 Advanced Analytics</h4>
-                    <p style="margin: 0; color: #134e4a;">Detailed charts, trend analysis, and comparative product
-                        insights.</p>
+                <div class="keyword-chip" data-sentiment="positive">
+                    <span class="keyword-chip__text">JavaScript</span>
+                    <span class="keyword-chip__sentiment">⚡</span>
                 </div>
-
-                <div
-                    style="background: linear-gradient(135deg, #fefce8 0%, #fef3c7 100%); padding: 1.5rem; border-radius: 12px; border-left: 4px solid #f59e0b;">
-                    <h4 style="color: #d97706; margin-bottom: 0.5rem;">🌐 More Platforms</h4>
-                    <p style="margin: 0; color: #92400e;">Support for additional e-commerce platforms and international
-                        marketplaces.</p>
+                <div class="keyword-chip" data-sentiment="positive">
+                    <span class="keyword-chip__text">CSS3</span>
+                    <span class="keyword-chip__sentiment">🎨</span>
                 </div>
-
-                <div
-                    style="background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%); padding: 1.5rem; border-radius: 12px; border-left: 4px solid #0ea5e9;">
-                    <h4 style="color: #0369a1; margin-bottom: 0.5rem;">🔔 Notifications</h4>
-                    <p style="margin: 0; color: #0c4a6e;">Price alerts, review monitoring, and trust score change
-                        notifications.</p>
+                <div class="keyword-chip" data-sentiment="positive">
+                    <span class="keyword-chip__text">HTML5</span>
+                    <span class="keyword-chip__sentiment">📄</span>
+                </div>
+                <div class="keyword-chip" data-sentiment="positive">
+                    <span class="keyword-chip__text">SQLite</span>
+                    <span class="keyword-chip__sentiment">🗄️</span>
+                </div>
+                <div class="keyword-chip" data-sentiment="positive">
+                    <span class="keyword-chip__text">REST API</span>
+                    <span class="keyword-chip__sentiment">🔌</span>
                 </div>
             </div>
-        </div>
+        </section>
 
-        <!-- Contact & Support -->
-        <div class="card">
-            <h2>📞 Contact & Support</h2>
-            <div
-                style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin-top: 1.5rem;">
-                <div
-                    style="background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%); padding: 1.5rem; border-radius: 12px; text-align: center;">
-                    <div style="font-size: 2rem; margin-bottom: 0.5rem;">💬</div>
-                    <h4 style="color: #1e293b; margin-bottom: 0.5rem;">Feedback</h4>
-                    <p style="margin: 0; color: #475569;">Share your thoughts and suggestions for improvement</p>
-                </div>
-
-                <div
-                    style="background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%); padding: 1.5rem; border-radius: 12px; text-align: center;">
-                    <div style="font-size: 2rem; margin-bottom: 0.5rem;">🐛</div>
-                    <h4 style="color: #1e293b; margin-bottom: 0.5rem;">Bug Reports</h4>
-                    <p style="margin: 0; color: #475569;">Report issues or unexpected behavior</p>
-                </div>
-
-                <div
-                    style="background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%); padding: 1.5rem; border-radius: 12px; text-align: center;">
-                    <div style="font-size: 2rem; margin-bottom: 0.5rem;">🤝</div>
-                    <h4 style="color: #1e293b; margin-bottom: 0.5rem;">Contribute</h4>
-                    <p style="margin: 0; color: #475569;">Help improve the project with code contributions</p>
-                </div>
-            </div>
-        </div>
+        <!-- CTA Section -->
+        <section style="padding: var(--space-10) 0; text-align: center;">
+            <h2 style="font-size: var(--text-3xl); font-weight: var(--font-semibold); color: var(--text); margin-bottom: var(--space-4);">
+                Ready to Analyze?
+            </h2>
+            <p style="font-size: var(--text-lg); color: var(--muted); margin-bottom: var(--space-6); max-width: 600px; margin-left: auto; margin-right: auto;">
+                Start analyzing product reviews now and make informed purchasing decisions.
+            </p>
+            <a href="index.html" class="btn btn--primary" style="display: inline-flex;">
+                <span class="btn__text">Analyze a Product</span>
+                <span class="btn__icon">→</span>
+            </a>
+        </section>
 
         <!-- Footer -->
-        <footer class="card text-center"
-            style="background: linear-gradient(135deg, #1f2937 0%, #111827 100%); color: white;">
-            <div style="margin-bottom: 2rem;">
-                <h3 style="color: #f9fafb; margin-bottom: 1rem;">Product Trust Analyzer</h3>
-                <p style="color: #d1d5db; margin-bottom: 1rem;">Educational project demonstrating modern web development
-                    and fake review detection algorithms</p>
-            </div>
-
-            <div
-                style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; margin-bottom: 2rem; text-align: left;">
-                <div>
-                    <h4 style="color: #f9fafb; margin-bottom: 0.5rem;">Technologies</h4>
-                    <ul style="list-style: none; padding: 0; margin: 0; color: #d1d5db;">
-                        <li>• HTML5 & CSS3</li>
-                        <li>• Vanilla JavaScript</li>
-                        <li>• Progressive Web App</li>
-                        <li>• Responsive Design</li>
-                    </ul>
-                </div>
-
-                <div>
-                    <h4 style="color: #f9fafb; margin-bottom: 0.5rem;">Features</h4>
-                    <ul style="list-style: none; padding: 0; margin: 0; color: #d1d5db;">
-                        <li>• Fake Review Detection</li>
-                        <li>• Trust Score Analysis</li>
-                        <li>• History Tracking</li>
-                        <li>• Multiple Themes</li>
-                    </ul>
-                </div>
-
-                <div>
-                    <h4 style="color: #f9fafb; margin-bottom: 0.5rem;">Educational</h4>
-                    <ul style="list-style: none; padding: 0; margin: 0; color: #d1d5db;">
-                        <li>• Learning Project</li>
-                        <li>• Open Source</li>
-                        <li>• Algorithm Demo</li>
-                        <li>• Best Practices</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div style="border-top: 1px solid #374151; padding-top: 1.5rem;">
-                <p style="color: #9ca3af; margin-bottom: 1rem;">&copy; 2024 Product Trust Analyzer. Educational project
-                    for learning web development.</p>
-                <p style="color: #f9fafb; margin-bottom: 1rem;"><strong>Made with ❤️ using modern web
-                        technologies</strong></p>
-
-                <div style="display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap; margin-top: 1rem;">
-                    <a href="https://github.com/Drona-Balasara/Fake-Review-Analyzer-Amazon-Flipkart" target="_blank"
-                        style="color: #60a5fa; text-decoration: none; display: flex; align-items: center; gap: 0.5rem;">
-                        <span>📂</span> GitHub Repository
-                    </a>
-                    <a href="https://netlify.com" target="_blank"
-                        style="color: #34d399; text-decoration: none; display: flex; align-items: center; gap: 0.5rem;">
-                        <span>🚀</span> Powered by Netlify
-                    </a>
-                    <a href="https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps" target="_blank"
-                        style="color: #fbbf24; text-decoration: none; display: flex; align-items: center; gap: 0.5rem;">
-                        <span>📱</span> PWA Technology
-                    </a>
-                </div>
-            </div>
+        <footer style="padding: var(--space-10) 0; border-top: 1px solid var(--border-color); text-align: center; color: var(--muted);">
+            <p style="margin-bottom: var(--space-2);">&copy; 2024 Product Trust Analyzer. Educational project for learning web development.</p>
+            <p style="font-size: var(--text-sm);"><strong>Disclaimer:</strong> This tool provides estimates based on simple algorithms. Always use your judgment when making purchase decisions.</p>
         </footer>
     </div>
 
     <!-- JavaScript -->
-    <script src="js/main.js"></script>
+    <script src="js/animations.js?v=2.0"></script>
+    <script src="js/main.js?v=2.0"></script>
+    <script>
+        // Theme toggle
+        function toggleTheme() {
+            const html = document.documentElement;
+            const currentTheme = html.getAttribute('data-theme') || 'dark';
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            html.setAttribute('data-theme', newTheme);
+            
+            const themeIcon = document.getElementById('themeIcon');
+            if (themeIcon) {
+                themeIcon.textContent = newTheme === 'dark' ? '🌙' : '☀️';
+            }
+            
+            localStorage.setItem('theme', newTheme);
+        }
+        
+        // Load saved theme
+        document.addEventListener('DOMContentLoaded', function() {
+            const savedTheme = localStorage.getItem('theme') || 'dark';
+            document.documentElement.setAttribute('data-theme', savedTheme);
+            const themeIcon = document.getElementById('themeIcon');
+            if (themeIcon) {
+                themeIcon.textContent = savedTheme === 'dark' ? '🌙' : '☀️';
+            }
+        });
+    </script>
 </body>
-
 </html>

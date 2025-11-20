@@ -27,22 +27,18 @@ document.addEventListener('DOMContentLoaded', function() {
  */
 function initializeApp() {
     // Enable analyze button when URL is valid
-    if (urlInput) {
-        urlInput.addEventListener('input', function() {
-            const isValid = validateURL(this.value);
-            if (analyzeBtn) {
-                analyzeBtn.disabled = !isValid;
-                
-                if (isValid) {
-                    analyzeBtn.textContent = 'Analyze Reviews';
-                    analyzeBtn.classList.remove('disabled');
-                } else {
-                    analyzeBtn.textContent = 'Enter Valid URL';
-                    analyzeBtn.classList.add('disabled');
-                }
-            }
-        });
-    }
+    urlInput.addEventListener('input', function() {
+        const isValid = validateURL(this.value);
+        analyzeBtn.disabled = !isValid;
+        
+        if (isValid) {
+            analyzeBtn.textContent = 'Analyze Reviews';
+            analyzeBtn.classList.remove('disabled');
+        } else {
+            analyzeBtn.textContent = 'Enter Valid URL';
+            analyzeBtn.classList.add('disabled');
+        }
+    });
 }
 
 /**
@@ -426,46 +422,16 @@ function generateProductImage(productId) {
 function displayResults(result) {
     if (!results) return;
     
-    // Update trust score
-    const scoreText = document.getElementById('scoreText');
-    const scoreMeter = document.getElementById('scoreMeter');
+    // Update product info in header
+    updateProductInfo(result.product, result.totalReviews, result.genuineAverage);
     
-    if (scoreText && scoreMeter) {
-        scoreText.textContent = result.trustScore.toFixed(1);
-        
-        // Update score meter color
-        scoreMeter.className = 'score-meter';
-        if (result.trustScore >= 7) {
-            scoreMeter.classList.add('score-high');
-            scoreText.className = 'score-high';
-        } else if (result.trustScore >= 4) {
-            scoreMeter.classList.add('score-medium');
-            scoreText.className = 'score-medium';
-        } else {
-            scoreMeter.classList.add('score-low');
-            scoreText.className = 'score-low';
-        }
-    }
+    // Update trust score with GaugeRing animation
+    updateTrustScore(result.trustScore);
     
-    // Update fake alert
-    const fakeAlert = document.getElementById('fakeAlert');
-    const fakeText = document.getElementById('fakeText');
+    // Update key metrics pills
+    updateKeyMetrics(result);
     
-    if (fakeAlert && fakeText) {
-        fakeText.textContent = `${result.fakePercentage}% fake reviews detected`;
-        
-        fakeAlert.className = 'fake-alert';
-        if (result.fakePercentage < 15) {
-            fakeAlert.classList.add('safe');
-        } else if (result.fakePercentage < 30) {
-            fakeAlert.classList.add('warning');
-        }
-    }
-    
-    // Update product info
-    updateProductInfo(result.product);
-    
-    // Update star distribution
+    // Update star distribution as BarRows
     updateStarDistribution(result.starDistribution, result.totalReviews);
     
     // Update recommendation
@@ -474,28 +440,139 @@ function displayResults(result) {
     // Update patterns detected
     updatePatternsDetected(result.patternsDetected);
     
-    // Show results
+    // Update sticky context bar
+    updateContextBar(result.product, result.trustScore);
+    
+    // Show results with animation
     results.style.display = 'block';
-    results.scrollIntoView({ behavior: 'smooth' });
+    results.classList.add('visible');
+    
+    // Trigger animations
+    if (window.AnimationUtils) {
+        // Animate gauge ring
+        const gaugeRing = document.getElementById('trustScoreGauge');
+        if (gaugeRing) {
+            setTimeout(() => {
+                window.AnimationUtils.animateGaugeRing(gaugeRing, result.trustScore * 10);
+            }, 200);
+        }
+        
+        // Animate bar rows with stagger
+        const barRows = document.querySelectorAll('.bar-row');
+        if (barRows.length > 0) {
+            window.AnimationUtils.animateList(barRows);
+        }
+        
+        // Setup context bar observer
+        window.AnimationUtils.setupContextBarObserver('.results-header');
+    }
+    
+    // Scroll to results
+    results.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 
 /**
  * Update product information display
  */
-function updateProductInfo(product) {
+function updateProductInfo(product, totalReviews, genuineAverage) {
     const productImage = document.getElementById('productImage');
     const productTitle = document.getElementById('productTitle');
-    const totalReviews = document.getElementById('totalReviews');
-    const genuineAverage = document.getElementById('genuineAverage');
+    const productPlatform = document.getElementById('productPlatform');
+    const totalReviewsEl = document.getElementById('totalReviews');
+    const genuineAverageEl = document.getElementById('genuineAverage');
     
-    if (productImage) productImage.src = product.imageUrl;
+    if (productImage) {
+        productImage.src = product.imageUrl;
+        productImage.alt = product.title;
+    }
     if (productTitle) productTitle.textContent = product.title;
-    if (totalReviews) totalReviews.textContent = '100'; // Demo value
-    if (genuineAverage) genuineAverage.textContent = '4.2'; // Demo value
+    if (productPlatform) productPlatform.textContent = product.platform === 'amazon' ? 'Amazon' : 'Flipkart';
+    if (totalReviewsEl) totalReviewsEl.textContent = `${totalReviews} reviews`;
+    if (genuineAverageEl) genuineAverageEl.textContent = genuineAverage.toFixed(1);
 }
 
 /**
- * Update star distribution chart
+ * Update trust score with GaugeRing
+ */
+function updateTrustScore(trustScore) {
+    const scoreText = document.getElementById('scoreText');
+    const gaugeRingFill = document.getElementById('gaugeRingFill');
+    
+    if (scoreText) {
+        scoreText.textContent = Math.round(trustScore * 10);
+    }
+    
+    if (gaugeRingFill) {
+        // Determine color based on score
+        gaugeRingFill.classList.remove('gauge-ring__fill--good', 'gauge-ring__fill--warn', 'gauge-ring__fill--bad');
+        if (trustScore >= 7) {
+            gaugeRingFill.classList.add('gauge-ring__fill--good');
+        } else if (trustScore >= 4) {
+            gaugeRingFill.classList.add('gauge-ring__fill--warn');
+        } else {
+            gaugeRingFill.classList.add('gauge-ring__fill--bad');
+        }
+    }
+}
+
+/**
+ * Update key metrics pills
+ */
+function updateKeyMetrics(result) {
+    // Authenticity (inverse of fake percentage)
+    const authenticityPill = document.getElementById('authenticityPill');
+    if (authenticityPill) {
+        const authenticity = 100 - result.fakePercentage;
+        authenticityPill.querySelector('.score-pill__value').textContent = `${Math.round(authenticity)}%`;
+        authenticityPill.className = 'score-pill';
+        if (authenticity >= 85) {
+            authenticityPill.classList.add('score-pill--good');
+        } else if (authenticity >= 70) {
+            authenticityPill.classList.add('score-pill--warn');
+        } else {
+            authenticityPill.classList.add('score-pill--bad');
+        }
+    }
+    
+    // Fraud Risk
+    const fraudRiskPill = document.getElementById('fraudRiskPill');
+    if (fraudRiskPill) {
+        fraudRiskPill.querySelector('.score-pill__value').textContent = `${Math.round(result.fakePercentage)}%`;
+        fraudRiskPill.className = 'score-pill';
+        if (result.fakePercentage < 15) {
+            fraudRiskPill.classList.add('score-pill--good');
+        } else if (result.fakePercentage < 30) {
+            fraudRiskPill.classList.add('score-pill--warn');
+        } else {
+            fraudRiskPill.classList.add('score-pill--bad');
+        }
+    }
+    
+    // Sentiment
+    const sentimentPill = document.getElementById('sentimentPill');
+    if (sentimentPill) {
+        const sentiment = result.genuineAverage >= 3.5 ? 'Positive' : result.genuineAverage >= 2.5 ? 'Mixed' : 'Negative';
+        sentimentPill.querySelector('.score-pill__value').textContent = sentiment;
+        sentimentPill.className = 'score-pill';
+        if (sentiment === 'Positive') {
+            sentimentPill.classList.add('score-pill--good');
+        } else if (sentiment === 'Mixed') {
+            sentimentPill.classList.add('score-pill--warn');
+        } else {
+            sentimentPill.classList.add('score-pill--bad');
+        }
+    }
+    
+    // Review Volume
+    const volumePill = document.getElementById('volumePill');
+    if (volumePill) {
+        volumePill.querySelector('.score-pill__value').textContent = result.totalReviews;
+        volumePill.className = 'score-pill score-pill--good';
+    }
+}
+
+/**
+ * Update star distribution chart as BarRows
  */
 function updateStarDistribution(distribution, total) {
     for (let star = 1; star <= 5; star++) {
@@ -506,11 +583,17 @@ function updateStarDistribution(distribution, total) {
         const countElement = document.getElementById(`star${star}Count`);
         
         if (fillElement) {
-            fillElement.style.width = `${percentage}%`;
+            // Animate bar fill with delay
+            if (window.AnimationUtils) {
+                const barRow = fillElement.closest('.bar-row');
+                window.AnimationUtils.animateBarRow(barRow, percentage, star * 50);
+            } else {
+                fillElement.style.width = `${percentage}%`;
+            }
         }
         
         if (countElement) {
-            countElement.textContent = `${count} (${Math.round(percentage)}%)`;
+            countElement.textContent = `${Math.round(percentage)}%`;
         }
     }
 }
@@ -522,24 +605,76 @@ function updateRecommendation(recommendation) {
     const recommendationElement = document.getElementById('recommendation');
     
     if (recommendationElement) {
-        recommendationElement.textContent = recommendation.text;
-        recommendationElement.className = `fake-alert ${recommendation.level}`;
+        recommendationElement.querySelector('.score-pill__value').textContent = recommendation.text;
+        recommendationElement.className = 'score-pill';
+        if (recommendation.level === 'safe') {
+            recommendationElement.classList.add('score-pill--good');
+        } else if (recommendation.level === 'warning') {
+            recommendationElement.classList.add('score-pill--warn');
+        } else {
+            recommendationElement.classList.add('score-pill--bad');
+        }
     }
 }
 
 /**
- * Update patterns detected
+ * Update patterns detected as keyword chips
  */
 function updatePatternsDetected(patterns) {
     const patternsElement = document.getElementById('patternsDetected');
     
     if (patternsElement) {
         if (patterns.length === 0) {
-            patternsElement.innerHTML = '<p>No suspicious patterns detected.</p>';
+            patternsElement.innerHTML = '<div class="keyword-chip" data-sentiment="positive"><span class="keyword-chip__text">No suspicious patterns detected</span><span class="keyword-chip__sentiment">✅</span></div>';
         } else {
-            const list = patterns.map(pattern => `<li>${pattern}</li>`).join('');
-            patternsElement.innerHTML = `<ul>${list}</ul>`;
+            const chips = patterns.map(pattern => 
+                `<div class="keyword-chip" data-sentiment="negative">
+                    <span class="keyword-chip__text">${pattern}</span>
+                    <span class="keyword-chip__sentiment">⚠️</span>
+                </div>`
+            ).join('');
+            patternsElement.innerHTML = chips;
         }
+    }
+}
+
+/**
+ * Update sticky context bar
+ */
+function updateContextBar(product, trustScore) {
+    const contextImage = document.getElementById('contextImage');
+    const contextTitle = document.getElementById('contextTitle');
+    const contextScoreChip = document.getElementById('contextScoreChip');
+    
+    if (contextImage) {
+        contextImage.src = product.imageUrl;
+        contextImage.alt = product.title;
+    }
+    
+    if (contextTitle) {
+        contextTitle.textContent = product.title;
+    }
+    
+    if (contextScoreChip) {
+        const score = Math.round(trustScore * 10);
+        contextScoreChip.textContent = `Trust Score: ${score}`;
+        contextScoreChip.className = 'score-chip';
+        if (trustScore >= 7) {
+            contextScoreChip.classList.add('score-chip--good');
+        } else if (trustScore >= 4) {
+            contextScoreChip.classList.add('score-chip--warn');
+        } else {
+            contextScoreChip.classList.add('score-chip--bad');
+        }
+    }
+}
+
+/**
+ * Re-analyze current product
+ */
+function reanalyze() {
+    if (urlInput && urlInput.value) {
+        urlForm.dispatchEvent(new Event('submit'));
     }
 }
 
@@ -578,6 +713,18 @@ function showLoading(show) {
     }
     if (results) {
         results.style.display = show ? 'none' : results.style.display;
+        if (!show) {
+            results.classList.remove('visible');
+        }
+    }
+    
+    // Update progress strip
+    if (window.AnimationUtils) {
+        if (show) {
+            window.AnimationUtils.updateProgressStrip(30);
+        } else {
+            window.AnimationUtils.updateProgressStrip(100);
+        }
     }
 }
 
@@ -585,7 +732,21 @@ function showLoading(show) {
  * Show error message
  */
 function showError(message) {
-    alert(message); // Simple error display - can be enhanced
+    const urlInputField = document.getElementById('urlInputField');
+    const urlError = document.getElementById('urlError');
+    
+    if (urlInputField && urlError) {
+        urlInputField.setAttribute('data-error', 'true');
+        urlError.textContent = message;
+        
+        // Clear error after 5 seconds
+        setTimeout(() => {
+            urlInputField.setAttribute('data-error', 'false');
+            urlError.textContent = '';
+        }, 5000);
+    } else {
+        alert(message);
+    }
 }
 
 /**
